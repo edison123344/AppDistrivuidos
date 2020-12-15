@@ -204,7 +204,7 @@ public class RegistrarLibro extends JFrame {
               
             final Context context = new InitialContext(jndiProperties);  
               
-            final String lookupName = "ejb:";  
+            final String lookupName = "ejb:Examen.EdisonHuinaizaca.ON.RegistroRemoto";  
               
             this.remotoON = (RegistroRemoto) context.lookup(lookupName);  
               
