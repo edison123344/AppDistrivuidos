@@ -9,6 +9,7 @@ import ups.edu.Banco.Modelo.Cajero;
 
 @Stateless
 public class CajeroDAO {
+	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private EntityManager em;
 

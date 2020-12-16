@@ -8,6 +8,7 @@ import ups.edu.Banco.Modelo.Estado;
 
 @Stateless
 public class EstadoDAO {
+	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private EntityManager em;
 

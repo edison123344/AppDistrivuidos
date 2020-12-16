@@ -9,6 +9,7 @@ import ups.edu.Banco.Modelo.Interes;
 
 @Stateless
 public class InterezDAO {
+	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private EntityManager em;
 

@@ -9,6 +9,7 @@ import ups.edu.Banco.Modelo.Retiro;
 
 @Stateless
 public class RetiroDAO {
+	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private EntityManager em;
 

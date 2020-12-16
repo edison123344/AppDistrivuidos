@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 
 @Entity(name = "Administrador")
@@ -13,13 +14,13 @@ public class Administrador implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name = "idAdmininstrador")
+	@JoinColumn(name = "idAdmininstrador")
 	private int idAdmin;
-	@Column(name = "modInteres")
+	@JoinColumn(name = "modInteres")
 	private Interes inters;
-	@Column(name = "DatosAdmin")
+	@JoinColumn(name = "DatosAdmin")
 	private Usuario usuario;
-	@Column(name = "estadoAdmin")
+	@JoinColumn(name = "estadoAdmin")
 	private String estado;
 
 	public int getIdAdmin() {

@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 
 @Entity(name = "Cuenta")
@@ -14,13 +15,13 @@ public class Cuenta implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@Column(name = "idCuenta")
+	@JoinColumn(name = "idCuenta")
 	private int idCuenta;
-	@Column(name = "cuenta")
+	@JoinColumn(name = "cuenta")
 	private String numCuenta;
-	@Column(name = "infoUsuario")
+	@JoinColumn(name = "infoUsuario")
 	private Usuario usuario;
-	@Column(name = "Estadocuenta")
+	@JoinColumn(name = "Estadocuenta")
 	private Estado estado;
 	public int getIdCuenta() {
 		return idCuenta;

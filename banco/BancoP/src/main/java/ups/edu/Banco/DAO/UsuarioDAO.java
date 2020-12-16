@@ -9,6 +9,7 @@ import ups.edu.Banco.Modelo.Usuario;
 
 @Stateless
 public class UsuarioDAO {
+	@SuppressWarnings("cdi-ambiguous-dependency")
 	@Inject
 	private EntityManager em;
 

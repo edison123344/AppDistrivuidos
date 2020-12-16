@@ -8,9 +8,10 @@ import ups.edu.Banco.Modelo.Administrador;
 @Stateless
 public class AdministradorDAO {
 	
+	
 	@Inject
 	private EntityManager em;
-
+	
 	public boolean inser(Administrador entity) throws Exception {
 		boolean estado = true;
 		try {

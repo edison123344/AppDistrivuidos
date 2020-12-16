@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 public class Resources {
 
-	String dsName = "java:jboss/datasources/Banco";
+	String dsName = "java:jboss/datasources/banco";
 
     @Produces
     private Connection createConnection() throws SQLException, NamingException {
