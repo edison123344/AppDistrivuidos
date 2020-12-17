@@ -2,7 +2,7 @@ package ups.edu.Banco.Negocio;
 
 import ups.edu.Banco.Modelo.Cuenta;
 
-public class GestoClienteON {
+public class GestorClienteON {
 public Cuenta datos() {
 	return null;
 }
