@@ -7,6 +7,7 @@ package ups.edu.Banco.beans;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -57,8 +58,11 @@ public String getEmail() {
 public String BuscarUsuario() throws Exception {
 	 usuario=getLoginON().login(email, password);
 	if(email.equals(usuario.getPersona().getCorreo())&& password.equals(usuario.getPasswod())) {
-		
+		return "Cliente";
 	}
-	return "login";
+	FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
+			"","");
+	Fa
+	return null;
 }
 }
