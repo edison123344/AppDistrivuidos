@@ -3,7 +3,7 @@ package ups.edu.Banco.DAO;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-
+import javax.persistence.Query;
 import ups.edu.Banco.Modelo.Usuario;
 
 
@@ -61,4 +61,17 @@ public class UsuarioDAO {
 		}
 		return estado;
 	}
+	public Usuario loginUsuario(String email ,String password) throws Exception {
+	 try {
+         String jpql = "SELECT a FROM Usuario u , Persona p FROM u.persona.idPersona=p.id and email= :email and password=:password ";
+         Query q = em.createQuery(jpql, Usuario.class);
+         q.setParameter("email", email);
+         q.setParameter("password", password);
+         return (Usuario) q.getSingleResult();
+        
+     } catch (Exception e) {
+         throw new Exception("no existe usuario");
+     }
+	 
+	 }
 }

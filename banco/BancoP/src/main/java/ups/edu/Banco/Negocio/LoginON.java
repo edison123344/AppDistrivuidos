@@ -7,10 +7,10 @@ public class LoginON {
 
 	private UsuarioDAO usuario;
 	
-public Usuario login(String email ,String passwor) {
-	
-	  if(UsuarioDAO.read(usuario.)!=null)
-	      return null;
+public Usuario login(String email ,String password) throws Exception {
+	    Usuario usr=usuario.loginUsuario(email, password);
+	 // if(UsuarioDAO.read(usuario.)!=null)
+	      return usr;
 }
 public Usuario registroIngreso() {
 	return null;

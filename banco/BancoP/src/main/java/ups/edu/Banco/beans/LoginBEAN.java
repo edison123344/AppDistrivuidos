@@ -11,46 +11,54 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import ups.edu.Banco.Modelo.Usuario;
 import ups.edu.Banco.Negocio.LoginON;
 
 
 public class LoginBEAN {
 
-    private String cedula;
+    private String email;
     private String password;
-
+    Usuario usuario;
     @Inject
     private LoginON loginON;
-
-    public LoginBEAN() {
-    }
-
-    @PostConstruct
-    public void init() {
-        cedula = "123";
-        password= "0225";
-
-    }
-    /**
-     * Permite guardar el login desde la vista, 
-     * Consume la logica de los objetos de negocios.
-     * @return
-     */
-    public String guardarLogin() {
-		return cedula;
     
+    
+public String getEmail() {
+		return email;
+	}
 
-     
-    }
 
-    public String getCedula() {
-        return cedula;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
 
-  
+	public String getPassword() {
+		return password;
+	}
 
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public LoginON getLoginON() {
+		return loginON;
+	}
+
+
+	public void setLoginON(LoginON loginON) {
+		this.loginON = loginON;
+	}
+
+
+public String BuscarUsuario() throws Exception {
+	 usuario=getLoginON().login(email, password);
+	if(email.equals(usuario.getPersona().getCorreo())&& password.equals(usuario.getPasswod())) {
+		
+	}
+	return "login";
+}
 }
