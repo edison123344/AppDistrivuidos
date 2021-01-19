@@ -1,12 +1,15 @@
 package Proyecto.BancoPrctica.Beans;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Date;
 
-//import javax.enterprise.context.RequestScoped;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import Proyecto.BancoPractica.Modelo.Estado;
+import Proyecto.BancoPractica.Modelo.Poliza;
+import Proyecto.BancoPrectica.Negocio.GestorClienteON;
 
 
 @Named
@@ -16,62 +19,36 @@ public class UsuarioBean implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-
-	private String Nombre;
-	private String numcuenta;
-	private Date fechaInicio;
-	private Date fechaTransaccion;
-	private String tipo;
-	private int id;
-
-	public String getNombre() {
-		return Nombre;
+	@Inject
+	private GestorClienteON clienteON;
+	
+	private List<Poliza> listaPolizas;
+	private List<Estado> listarEstado;
+	//@PostConstruct
+	//public void init()  {
+		//ListarEstadoCuenta();
+	//}
+	public List<Poliza> getListaPolizas() {
+		return listaPolizas;
 	}
-
-	public void setNombre(String nombre) {
-		Nombre = nombre;
+	public void setListaPolizas(List<Poliza> listaPolizas) {
+		this.listaPolizas = listaPolizas;
 	}
-
-	public String getNumcuenta() {
-		return numcuenta;
+	public List<Estado> getListarEstado() {
+		return listarEstado;
 	}
-
-	public void setNumcuenta(String numcuenta) {
-		this.numcuenta = numcuenta;
+	public void setListarEstado(List<Estado> listarEstado) {
+		this.listarEstado = listarEstado;
 	}
-
-	public Date getFechaInicio() {
-		return fechaInicio;
+	public String ListarPoliza()  {
+		listaPolizas=clienteON.ListarPoliza();
+		return "";
 	}
-
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	
+	public String ListarEstadoCuenta()  {
+		listarEstado=clienteON.listaTransacciones();
+				System.out.println("lista");
+	
+		return "Usuario";
 	}
-
-	public Date getFechaTransaccion() {
-		return fechaTransaccion;
-	}
-
-	public void setFechaTransaccion(Date fechaTransaccion) {
-		this.fechaTransaccion = fechaTransaccion;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
 }

@@ -6,8 +6,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-
-import Proyecto.BancoPractica.Modelo.Cuenta;
 import Proyecto.BancoPractica.Modelo.Estado;
 import Proyecto.BancoPrectica.Negocio.GestionCajeroON;
 
@@ -35,7 +33,6 @@ public class TransaccionREST {
 				e.printStackTrace();
 				return m;
 			} 
-
 		}
 
 	    @POST
@@ -56,19 +53,5 @@ public class TransaccionREST {
 				m.setMessage(e.getMessage());
 				return m;
 			}
-			} 
-
-	    @GET
-		@Path("listar")
-	    @Consumes("application/json")
-	    @Produces("application/json")
-		public List<Estado> getlistar() throws Exception {
-			try {
-				return cajeroON.listado();
-			} catch (NumberFormatException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} 
-			return null;
-		}
+			} 	
 }

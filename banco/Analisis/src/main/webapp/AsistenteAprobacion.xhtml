@@ -1,25 +1,30 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en"
+<html lang="en" 
 xmlns="http://www.w3.org/1999/xhtml"
 xmlns:h="http://xmlns.jcp.org/jsf/html"
 xmlns:f="http://xmlns.jcp.org/jsf/core"
 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-
- <h:head>
-      <meta charset ="utf-8"/>
-	  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	  <meta name="description" content=""/>
-	  <meta name="author" content=""/>
-	  <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png"/>
-	  <title>Login</title>
-	  <link href="html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-	  <link href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet"/>
-	  <link href="html/css/animate.css" rel="stylesheet"/>
-	  <link href="html/css/style.css" rel="stylesheet"/>
-	  <link href="html/css/colors/default.css" id="theme" rel="stylesheet"/>
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="plugins/images/favicon.png" />
+	<title>Prueva</title>
+	<link href="html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link
+		href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css"
+		rel="stylesheet" />
+	<link href="html/css/animate.css" rel="stylesheet" />
+	<link href="html/css/style.css" rel="stylesheet" />
+	<link href="html/css/colors/default.css" id="theme" rel="stylesheet" />
+	<f:metadata>
+	<f:viewParam name="idPoliza" value="#{asistenteBean.idPoliza}"></f:viewParam>
+	 <f:viewAction action="#{asistenteBean.cargarDatosEditar()}"/>
+	</f:metadata>
 </h:head>
 <h:body class="fix-header">
     <div class="preloader">
@@ -48,7 +53,8 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                                     class="fa fa-search"/></a> </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
+                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
+                                width="36" class="img-circle"/><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
                     </li>
                 </ul>
             </div>
@@ -93,39 +99,54 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                             to Pro</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>
-                            <li class="active">Login</li>
+                            <li class="active">Registrar</li>
                         </ol>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
+                
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                            <h3 class="box-title">
-				                 <h:form class="form-horizontal form-material">
-				                 <b class="hidden-xs">#{loginBean.usuario.tipoUsuario}</b>
-				                                <div class="form-group">
-				                                    <label class="col-md-12">Numero de Cuenta</label>
-				                                    <div class="col-md-12">
-				                                       <h:inputText class="form-control form-control-line"
-										               	value="#{cajeroBean.numeroCuenta}" id="numCuenta" />
-				                                   </div>
-				                                </div>
-				                                <div class="form-group">
-				                                    <label for="example-email" class="col-md-12">Moto a Retirar</label>
-				                                    <div class="col-md-12">
-				                                        <h:inputText class="form-control form-control-line"
-											             value="#{cajeroBean.monto}" id="monto" />
-											        </div>
-				                                </div>				                        			                         			                                				                               
-				                                <div class="form-group">
-				                               <div class="col-sm-12">
-				                                  	<h:commandButton class="btn btn-success" action="#{cajeroBean.Retirar()}" value="Depocitar" />
-				                             </div>
-				                       </div>
-				                 </h:form>   
-                            </h3>
-                        </div>
+                      <div class="white-box">
+                         <h3 class="box-title">
+							<h:form class="form-horizontal form-material" id="frm">			
+								<div class="form-group">
+									<label  class="col-md-12">Id</label>
+									<div class="col-md-12">
+									 <ui:insert name="content">
+                                       #{asistenteBean.polisa.idPoliza}
+                                      </ui:insert>
+									</div>
+								</div>	
+								<div class="form-group">
+									<label  class="col-md-12">Plazo</label>
+									<div class="col-md-12">
+									 <ui:insert name="content">
+                                       #{asistenteBean.polisa.plazo}
+                                      </ui:insert>
+									</div>
+								</div>	
+								<div class="form-group">
+									<label  class="col-md-12">Monto</label>
+									<div class="col-md-12">
+									 <ui:insert name="content">
+                                       #{asistenteBean.polisa.moto}
+                                      </ui:insert>
+									</div>
+								</div>	
+								<div class="form-group">
+									<label class="col-md-12">Estado</label>
+									<div class="col-md-12">
+										<h:inputText class="form-control form-control-line"
+											value="#{asistenteBean.polisa.estado}" id="estado" />
+
+									</div>
+								</div>																	
+								<div class="form-group">
+								<h:commandButton class="btn btn-success"
+										action="#{asistenteBean.GuardarActualisacion()}"
+										value="Actualisar" />
+								</div>
+							</h:form>
+						</h3>
                     </div>
                 </div>
             </div>
@@ -149,4 +170,3 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 </h:body>
 
 </html>
-

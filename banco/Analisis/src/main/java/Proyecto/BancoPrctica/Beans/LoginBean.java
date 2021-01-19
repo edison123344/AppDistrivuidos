@@ -3,8 +3,6 @@ package Proyecto.BancoPrctica.Beans;
 
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -13,9 +11,6 @@ import javax.faces.context.FacesContext;
 //import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import Proyecto.BancoPractica.Modelo.Cuenta;
-import Proyecto.BancoPractica.Modelo.Estado;
 import Proyecto.BancoPractica.Modelo.Usuario;
 import Proyecto.BancoPrectica.Negocio.GestionLoginON;
 

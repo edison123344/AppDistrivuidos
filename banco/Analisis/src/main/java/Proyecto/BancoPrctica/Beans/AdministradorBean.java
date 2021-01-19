@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.annotation.PostConstruct;
 import Proyecto.BancoPractica.Modelo.Persona;
+import Proyecto.BancoPractica.Modelo.Taza;
 import Proyecto.BancoPractica.Modelo.Usuario;
 import Proyecto.BancoPrectica.Negocio.GestionAdminON;
 
@@ -32,6 +33,7 @@ public class AdministradorBean implements Serializable {
 	private GestionAdminON adminON;
 	private Persona persona;
 	private Usuario usuario;
+	private List<Taza> listataza;
 	/**Bean properties*/
 	private String nombre;
 	private String mail;
@@ -39,17 +41,22 @@ public class AdministradorBean implements Serializable {
 	private String cedula;
 	private String password;
 	private String tipo;
-	private Date Fecha;
-	
+
 	@PostConstruct
 	public void init() {
 		persona = new Persona();
 		usuario = new Usuario();
 	}
+	public List<Taza> getListataza() {
+		return listataza;
+	}
+	public void setListataza(List<Taza> listataza) {
+		this.listataza = listataza;
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
-
 	public String getCedula() {
 		return cedula;
 	}
@@ -59,55 +66,37 @@ public class AdministradorBean implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getMail() {
 		return mail;
 	}
-
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-
 	public String getTelefono() {
 		return telefono;
 	}
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public String getTipo() {
 		return tipo;
 	}
-
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
-	public Date getFecha() {
-		return Fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		Fecha = fecha;
-	}
-
+	
 	public String ingresarRol() throws Exception {
 		persona.setIdCedula(Integer.parseInt(cedula));
 		persona.setCorreo(getMail());
@@ -134,4 +123,8 @@ public class AdministradorBean implements Serializable {
 		Date miFecha = formato.parse(fechaString); 
 		return miFecha;
 	}
+	private String listar() throws Exception {
+		setListataza(adminON.listarTaza());
+		return "TazaAdministrador";
+	}	
 }

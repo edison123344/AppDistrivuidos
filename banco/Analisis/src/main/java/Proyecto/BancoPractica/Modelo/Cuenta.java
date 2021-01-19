@@ -2,7 +2,6 @@ package Proyecto.BancoPractica.Modelo;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -35,6 +34,12 @@ public class Cuenta implements Serializable{
 	private List<Estado> detalles;
 	
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public String getNumCuenta() {
 		return numCuenta;
 	}

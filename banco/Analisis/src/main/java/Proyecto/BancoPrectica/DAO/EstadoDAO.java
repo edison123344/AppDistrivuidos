@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import Proyecto.BancoPractica.Modelo.Estado;
 import Proyecto.BancoPractica.Modelo.Persona;
+import Proyecto.BancoPractica.Modelo.Usuario;
 
 
 
@@ -41,11 +43,14 @@ public class EstadoDAO {
 		}
 	}
 
-	public List<Estado> listar() throws Exception {
-		
-	    Query query = em.createNativeQuery("SELECT * FROM estado");
-	    List<Estado> results = query.getResultList();
-	    return results;
+	public List<Estado> listaEstado() {
+
+		try {	
+		    Query query = em.createNativeQuery("SELECT *  FROM estado ",Estado.class);
+		    return  query.getResultList();
+	} catch(NoResultException e) {
+	    return null;
+	  }	
 }
 
 }

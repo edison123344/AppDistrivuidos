@@ -2,11 +2,8 @@ package Proyecto.BancoPractica.Modelo;
 
 
 import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,11 +16,11 @@ public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	private int idCedula;
-	@Column(name = "`nombre`")
+	@Column(name = "nombre")
 	private String nombre;
-	@Column(name = "`telefono`")
+	@Column(name = "telefono")
 	private String telefono;
-	@Column(name = "`correo`")
+	@Column(name = "correo")
 	private String correo;
 	
 	public int getIdCedula() {

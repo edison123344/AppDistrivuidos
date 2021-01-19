@@ -10,11 +10,13 @@ import javax.inject.Inject;
 import Proyecto.BancoPractica.Modelo.Cuenta;
 import Proyecto.BancoPractica.Modelo.Estado;
 import Proyecto.BancoPractica.Modelo.Persona;
+import Proyecto.BancoPractica.Modelo.Poliza;
 import Proyecto.BancoPractica.Modelo.Usuario;
 import Proyecto.BancoPractica.Services.Correo;
 import Proyecto.BancoPrectica.DAO.CuentaDAO;
 import Proyecto.BancoPrectica.DAO.EstadoDAO;
 import Proyecto.BancoPrectica.DAO.PersonaDAO;
+import Proyecto.BancoPrectica.DAO.PolizaDAO;
 import Proyecto.BancoPrectica.DAO.UsuarioDAO;
 ////craptar los errores 
 @Stateless
@@ -26,12 +28,13 @@ public class GestionCajeroON {
 	private CuentaDAO cuentaDAO;
 	@Inject
 	private PersonaDAO personaDAO;
-	
 	@Inject
 	private UsuarioDAO usuarioDAO;
 	@Inject
 	private Correo correo;
-
+	@Inject
+	private PolizaDAO polizaDAO;
+	
 	public boolean Depocito(Estado estado) throws Exception {
 		return estadoDAO.insertar(estado);
 	}
@@ -50,9 +53,7 @@ public class GestionCajeroON {
 		 correo.correo(usuario);
 		return usuarioDAO.insertar(usuario);
 	}
-	public List<Estado> listado() throws Exception {
-		return estadoDAO.listar();
-	}
+
 	public Persona Busqueda(int idCedula) throws Exception {
 		return personaDAO.buscar(idCedula);
 	}
@@ -60,5 +61,7 @@ public class GestionCajeroON {
 	public boolean Crear(Cuenta cuenta) throws Exception {
 		return cuentaDAO.Crearcuenta(cuenta);
 	}
-	
+	public boolean solisitudPoliza(Poliza poliza) throws Exception {
+		return polizaDAO.insertar(poliza);
+	}
 }

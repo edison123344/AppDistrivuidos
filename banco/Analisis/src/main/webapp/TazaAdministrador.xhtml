@@ -1,25 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
- <h:head>
-      <meta charset ="utf-8"/>
-	  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-	  <meta name="description" content=""/>
-	  <meta name="author" content=""/>
-	  <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png"/>
-	  <title>Login</title>
-	  <link href="html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-	  <link href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet"/>
-	  <link href="html/css/animate.css" rel="stylesheet"/>
-	  <link href="html/css/style.css" rel="stylesheet"/>
-	  <link href="html/css/colors/default.css" id="theme" rel="stylesheet"/>
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://xmlns.jcp.org/jsf/html"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="icon" type="image/png" sizes="16x16"
+		href="plugins/images/favicon.png" />
+	<title>Prueva</title>
+	<link href="html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link
+		href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css"
+		rel="stylesheet" />
+	<link href="html/css/animate.css" rel="stylesheet" />
+	<link href="html/css/style.css" rel="stylesheet" />
+	<link href="html/css/colors/default.css" id="theme" rel="stylesheet" />
 </h:head>
-  <h:body class="fix-header">
+<h:body class="fix-header">
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
@@ -29,9 +32,9 @@
         <nav class="navbar navbar-default navbar-static-top m-b-0">
             <div class="navbar-header">
                 <div class="top-left-part">
-                            <img src="../plugins/images/admin-logo.png" alt="home"
+                            <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home"
                                 class="dark-logo" />
-                           <img src="../plugins/images/admin-logo-dark.png" alt="home"
+                            <!--This is light logo icon--><img src="../plugins/images/admin-logo-dark.png" alt="home"
                                 class="light-logo" />     
                 </div>
           
@@ -46,7 +49,8 @@
                                     class="fa fa-search"/></a> </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
+                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
+                                width="36" class="img-circle"/><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
                     </li>
                 </ul>
             </div>
@@ -83,8 +87,10 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Tipo Usuario:</h4>
+                        <h4 class="page-title">Taza</h4>
+                        <h4 class="page-title">Tipo Usuario:
                         <b class="hidden-xs">#{loginBean.usuario.tipoUsuario}</b>
+                        </h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
@@ -92,68 +98,47 @@
                             to Pro</a>
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>
-                            <li class="active">Login</li>
+                            <li class="active">Registrar</li>
                         </ol>
                     </div>
-                  
                 </div>
+                
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="white-box">
-                        <h:form id="frmcliente">  
-                          <div class="table-responsive">
+                      <div class="white-box">
+                         <h3 class="box-title">
+							<h:form class="form-horizontal form-material" id="frm">
+				                     <div class="table-responsive">
                           
-                           <h4 class="page-title">Resumen Poliza:</h4>
-                                 <!--    <h:dataTable class="table"  id="detallePoliza" value="#{usuarioBean.listaPolizas}"  var="poliza">
-                                    <h:column>
-                                        <f:facet name="header">Id</f:facet>
-                                        <label class="col-md-12">#{poliza.idPoliza}</label>
+				                     <h:dataTable class="table"  id="detalle" value="#{administradorBean.listataza}"  var="taza">
+				                      <h:column>
+                                        <f:facet name="header">#{taza.idTaza}</f:facet>
+                                        <label class="col-md-12">ID</label>
                                     </h:column>
                                     <h:column>
-                                        <f:facet name="header">Monto</f:facet>
-                                        <label class="col-md-12">#{poliza.moto}</label>
+                                        <f:facet name="header">#{taza.porsentaje}</f:facet>
+                                        <label class="col-md-12">Taza%</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Fecha Inicio</f:facet>
+                                        <label >#{taza.desde}</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Fecha Fin</f:facet>
+                                        <label>#{taza.hasta}</label>
                                     </h:column> 
-                                    <h:column>
-                                        <f:facet name="header">Plazo</f:facet>
-                                        <label class="col-md-12">#{poliza.plazo}</label>
-                                    </h:column> 
-                                    <h:column>
-                                        <f:facet name="header">Estado</f:facet>
-                                        <label class="col-md-12">#{poliza.estado}</label>
-                                    </h:column>   
-                                      <h:column>
-                                        <f:facet name="header">Fecha vencimiento</f:facet>
-                                        <label class="col-md-12">#{poliza.fechaVencimiento}</label>
-                                    </h:column>                                 
-									</h:dataTable>-->
-									
-							<h4 class="page-title">Datos Cuenta:</h4>		
-                                   
-				                     <h:dataTable class="table"  id="detalleEstado" value="#{usuarioBean.listarEstado}"  var="estado">
-                                    <h:column>
-                                        <f:facet name="header">#Id</f:facet>
-                                        <label class="col-md-12">#{estado.idEstado}</label>
-                                    </h:column>
-                                     <h:column>
-                                        <f:facet name="header">tipo Cuenta</f:facet>
-                                        <label >#{estado.tipo}</label>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">Fecha de Trasaccion</f:facet>
-                                        <label>#{estado.fecha}</label>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">monto</f:facet>
-                                        <label >#{estado.saldo}</label>
-                                    </h:column>                
+                                        <h:column>
+                                        <f:facet name="header">Editar</f:facet>
+                                        <h:commandButton action="#{aminTazaAgregarBean.editar(taza.idTaza)}" value="Editar" />
+                                    </h:column>                                                  
 									</h:dataTable>
-                                    
+                              
                                 </div> 
                                 <div class="col-sm-12">
-                                        <h:commandButton action="#{usuarioBean.ListarEstadoCuenta()}" value="Listar" />
+                                       
                                 </div>
-                            </h:form>  
-                        </div>
+								
+							</h:form>
+						</h3>
                     </div>
                 </div>
             </div>
@@ -161,17 +146,18 @@
             <footer class="footer text-center"> 2020 &copy; Banco.com </footer>
         </div>
     </div>
-
+    <!-- /#wrapper -->
+    <!-- jQuery -->
     <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
-  
+    <!-- Bootstrap Core JavaScript -->
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
- 
+    <!-- Menu Plugin JavaScript -->
     <script src="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
-
+    <!--slimscroll JavaScript -->
     <script src="html/js/jquery.slimscroll.js"></script>
-
+    <!--Wave Effects -->
     <script src="html/js/waves.js"></script>
-  
+    <!-- Custom Theme JavaScript -->
     <script src="html/js/custom.min.js"></script>
 </h:body>
 

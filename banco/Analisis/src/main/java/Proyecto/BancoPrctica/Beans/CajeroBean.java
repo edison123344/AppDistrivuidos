@@ -175,8 +175,10 @@ public class CajeroBean  implements Serializable {
 			persona.setIdCedula(cajeroON.Busqueda(Integer.parseInt(cedula)).getIdCedula());
 			usuario.setPersona(persona);
 			cajeroON.crearRol(usuario);
-			cuenta.setNumCuenta(cedula+aleatorios());
+			cuenta.setUsuario(usuario);
+			cuenta.setNumCuenta(cedula+aleatorios());		
 			cuenta.setTipoCuenta(tipo);
+			cajeroON.Crear(cuenta);
 		return "CajeroCuenta";
 	}
 	//pasar metodo al paquete negosio  para la contrasena

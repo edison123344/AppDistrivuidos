@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 
 @Entity(name = "Estado")
@@ -31,7 +30,7 @@ public class Estado implements Serializable {
 	@Column(name = "tipo")
 	private String Tipo;
 	@OneToOne
-	@JoinColumn(name="")
+	@JoinColumn(name="PK_cuenta")
 	private Cuenta cuenta;
 	@Column(name = "registro")
 	private Date Fecha;
