@@ -66,8 +66,8 @@ public boolean delite(int id) throws Exception {
 public Taza TazaDato(int dias) throws Exception {
 	try {
 		 Query query = em.createNativeQuery("select * From Taza Where (?>=desde and ?<=hasta )",Taza.class);
-	     
-		 query.setParameter(2, dias);
+		 query.setParameter(1, dias);
+		 query.setParameter(2, dias);		 
 		 return (Taza) query.getSingleResult();
 } catch(NoResultException e) {
     return null;

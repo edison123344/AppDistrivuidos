@@ -76,7 +76,7 @@ public class AminTazaAgregarBean implements Serializable {
 		taza.setDesde(desde);
 		taza.setHasta(hasta);
 		System.out.println(taza.toString());
-		this.adminON.crearTaza(taza);
+		adminON.crearTaza(taza);
 		
 		return"AgregarTazaAdmin.xhtml";
 	}

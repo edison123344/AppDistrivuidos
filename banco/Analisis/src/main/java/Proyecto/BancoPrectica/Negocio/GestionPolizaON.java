@@ -1,5 +1,8 @@
 package Proyecto.BancoPrectica.Negocio;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,17 +23,16 @@ public class GestionPolizaON {
 	@Inject
 	private TazaDAO tazaDAO;
 	
-	public double calculo;
+	
 	public Date fechaC;
-	public double total;
 public Poliza calcularPoliza(double monto, int dias) throws Exception {
 	
 	Poliza poliza = new Poliza();
 	Taza taza =new Taza();
 	taza=tazaDAO.TazaDato(dias);
-	calculo=monto*(1/dias)*(taza.getPorsentaje()/100);
+	double calculo = monto*(1.00/dias)*(taza.getPorsentaje()/100.00);	
+	double total= monto+calculo;
 	fechaC= sumarDiasAFecha(fechaActual(), dias);
-	total=monto+calculo;
 	poliza.setEstado("PorAprovar");
 	poliza.setMoto(monto);
 	poliza.setTotal(total);
@@ -38,8 +40,8 @@ public Poliza calcularPoliza(double monto, int dias) throws Exception {
 	poliza.setFechaVencimiento(fechaC);
 	return poliza;
 }
-public void GuardarPoliza() {
-	
+public void GuardarPoliza(Poliza poliza) throws Exception {
+	polizaDAO.insertar(poliza);
 }
 public void ActualizarPoliza() {
 	

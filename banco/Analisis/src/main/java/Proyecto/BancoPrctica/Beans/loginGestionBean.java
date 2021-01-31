@@ -51,8 +51,8 @@ public class loginGestionBean implements Serializable {
 		usuario.setEstado("Activo");
 		usuario.setPassword(aleatorios());
 	
-		System.out.println("tipooooo"+usuario.getTipoUsuario());
-		//loginON.recuperarClave(usuario);
+		
+		loginON.recuperarClave(usuario);
 		FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
 				"usuario recuperado su clave a sido enviada al correo","usuario recuperado su clave a sido enviada al correo");
 		FacesContext.getCurrentInstance().addMessage(null, msm);
