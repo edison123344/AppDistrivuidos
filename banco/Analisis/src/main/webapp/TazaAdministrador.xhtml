@@ -44,13 +44,10 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
                     <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"/> <a href=""><i
-                                    class="fa fa-search"/></a> </form>
+              
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
-                                width="36" class="img-circle"/><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
+                        <a class="profile-pic" href="#"> <b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
                     </li>
                 </ul>
             </div>
@@ -61,26 +58,23 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
                             class="hide-menu">Nabegacion</span></h3>
                 </div>
-                <ul class="nav" id="side-menu">
+                     <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Escritorio</a>
+                       <a  class="waves-effect"><h:outputLink  value ="#{navegacionAdministradorBean.AgrearUsuario()}" ><i class="fa fa-credit-card-alt"/>  Agrear Rol</h:outputLink> </a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i>Login</a>
+                        <a  class="waves-effect"><h:outputLink value ="#{navegacionAdministradorBean.AgrearTaza()}" ><i class="fa fa-credit-card-alt"/>   Agregar Taza</h:outputLink> </a>
                     </li>
                     
                     <li>
-                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw"
-                                aria-hidden="true"></i>Nosotros</a>
+                       <a  class="waves-effect"> <h:outputLink value ="#{navegacionAdministradorBean.listarTaza()}" ><i class="fa fa-credit-card-alt"/> listar</h:outputLink> </a>
+                    
                     </li>
                     <li>
                         <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw"
                         aria-hidden="true"></i>Google Map</a>
                     </li>
-                   
-                </ul>
+                    </ul>
             </div>
         </div>
         <div id="page-wrapper">
@@ -93,12 +87,11 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                         </h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
-                            to Pro</a>
+                     
                         <ol class="breadcrumb">
-                            <li><a href="#">Inicio</a></li>
-                            <li class="active">Registrar</li>
+                            <li> <h:outputLink  value ="#{navegacionAdministradorBean.AgrearUsuario()}" > Inicio</h:outputLink> </li>
+                            <li class="active"> <h:outputLink value ="#{navegacionAdministradorBean.listarTaza()}" > listar</h:outputLink> 
+                    </li>
                         </ol>
                     </div>
                 </div>
@@ -109,14 +102,14 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 							<h:form class="form-horizontal form-material" id="frm">
 				                     <div class="table-responsive">
                           
-				                     <h:dataTable class="table"  id="detalle" value="#{administradorBean.listataza}"  var="taza">
+				                     <h:dataTable class="table"  id="detalle" value="#{aminTazaAgregarBean.listataza}"  var="taza">
 				                      <h:column>
-                                        <f:facet name="header">#{taza.idTaza}</f:facet>
-                                        <label class="col-md-12">ID</label>
+                                        <f:facet name="header">Id</f:facet>
+                                        <label class="col-md-12">#{taza.idTaza}</label>
                                     </h:column>
                                     <h:column>
-                                        <f:facet name="header">#{taza.porsentaje}</f:facet>
-                                        <label class="col-md-12">Taza%</label>
+                                        <f:facet name="header">Porsentage</f:facet>
+                                        <label >#{taza.porsentaje}</label>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Fecha Inicio</f:facet>
@@ -126,15 +119,16 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                                         <f:facet name="header">Fecha Fin</f:facet>
                                         <label>#{taza.hasta}</label>
                                     </h:column> 
-                                        <h:column>
-                                        <f:facet name="header">Editar</f:facet>
-                                        <h:commandButton action="#{aminTazaAgregarBean.editar(taza.idTaza)}" value="Editar" />
-                                    </h:column>                                                  
+                                            <h:column>
+                                        <f:facet name="header">Eliminar</f:facet>
+                                        <h:commandButton action="#{aminTazaAgregarBean.Eliminar(taza.idTaza)}" value="eliminar" />
+                                        
+                                    </h:column>                              
 									</h:dataTable>
                               
                                 </div> 
                                 <div class="col-sm-12">
-                                       
+                                       <h:commandButton class="btn btn-success" action="#{aminTazaAgregarBean.listar()}" value="listar" />
                                 </div>
 								
 							</h:form>

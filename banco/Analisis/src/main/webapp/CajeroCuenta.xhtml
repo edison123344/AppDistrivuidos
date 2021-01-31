@@ -44,13 +44,10 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
                     <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"/> <a href=""><i
-                                    class="fa fa-search"/></a> </form>
+                       
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
-                                width="36" class="img-circle"/><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
+                        <a class="profile-pic" href="#"> <b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
                     </li>
                 </ul>
             </div>
@@ -61,19 +58,23 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
                             class="hide-menu">Nabegacion</span></h3>
                 </div>
-                <ul class="nav" id="side-menu">
+                        <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Escritorio</a>
+                       <a  class="waves-effect"><h:outputLink  value ="#{navegacionCajeroBean.Deposito()}" ><i class="fa fa-credit-card-alt"/>Deposito</h:outputLink> </a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i>Login</a>
+                        <a  class="waves-effect"><h:outputLink value ="#{navegacionCajeroBean.Retiro()}" ><i class="fa fa-credit-card-alt"/>Retiro</h:outputLink> </a>
                     </li>
                     
                     <li>
-                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw"
-                                aria-hidden="true"></i>Nosotros</a>
+                       <a  class="waves-effect"> <h:outputLink value ="#{navegacionCajeroBean.CrearCuenta()}" ><i class="fa fa-credit-card-alt"/>CrearUsuario</h:outputLink> 
+                    </a>
+                    
+                    </li>
+                         <li>
+                       <a  class="waves-effect"> <h:outputLink value ="#{navegacionCajeroBean.CrearPoliza()}" ><i class="fa fa-credit-card-alt"/>Crear Poliza</h:outputLink> 
+                    </a>
+                    
                     </li>
                     <li>
                         <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw"
@@ -87,12 +88,13 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Crear cuent</h4>
+                     <h4 class="page-title">Tipo Usuario:
+                        <b class="hidden-xs">#{loginBean.usuario.tipoUsuario}</b>
+                        </h4>
+                       
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
-                            to Pro</a>
+                       
                         <ol class="breadcrumb">
                             <li><a href="#">Inicio</a></li>
                             <li class="active">Registrar</li>

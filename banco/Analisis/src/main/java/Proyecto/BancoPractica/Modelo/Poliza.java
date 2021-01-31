@@ -19,21 +19,16 @@ public class Poliza implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long IdPoliza;
-	private String moto;
 	private String estado;
-	private String plazo;
 	private Date fechaVencimiento;
+    private Double moto;
+	private Double Total;
+	private Double Ganancia;
 	public long getIdPoliza() {
 		return IdPoliza;
 	}
 	public void setIdPoliza(long idPoliza) {
 		IdPoliza = idPoliza;
-	}
-	public String getMoto() {
-		return moto;
-	}
-	public void setMoto(String moto) {
-		this.moto = moto;
 	}
 	public String getEstado() {
 		return estado;
@@ -41,23 +36,36 @@ public class Poliza implements Serializable {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public String getPlazo() {
-		return plazo;
-	}
-	public void setPlazo(String plazo) {
-		this.plazo = plazo;
-	}
-	
 	public Date getFechaVencimiento() {
 		return fechaVencimiento;
 	}
 	public void setFechaVencimiento(Date fechaVencimiento) {
 		this.fechaVencimiento = fechaVencimiento;
 	}
+	public Double getMoto() {
+		return moto;
+	}
+	public void setMoto(Double moto) {
+		this.moto = moto;
+	}
+	public Double getTotal() {
+		return Total;
+	}
+	public void setTotal(Double total) {
+		Total = total;
+	}
+	public Double getGanancia() {
+		return Ganancia;
+	}
+	public void setGanancia(Double ganancia) {
+		Ganancia = ganancia;
+	}
 	@Override
 	public String toString() {
-		return "Poliza [IdPoliza=" + IdPoliza + ", moto=" + moto + ", estado=" + estado + ", plazo=" + plazo + "]";
+		return "Poliza [IdPoliza=" + IdPoliza + ", estado=" + estado + ", fechaVencimiento=" + fechaVencimiento
+				+ ", moto=" + moto + ", Total=" + Total + ", Ganancia=" + Ganancia + "]";
 	}
+
 
 
 }

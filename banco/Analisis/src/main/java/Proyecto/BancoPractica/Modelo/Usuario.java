@@ -1,13 +1,15 @@
 package Proyecto.BancoPractica.Modelo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,13 +31,16 @@ public class Usuario implements Serializable {
 	@Column(name = "tipo")
 	private String tipoUsuario;
 	
-	@Column(name = "fecha_Ingreso")
-	private Date fechaHistorial;
-
+    private  String estado;
 	@OneToOne
 	@JoinColumn(name="`FK_per_idCedula`")
 	private Persona persona;
 
+	@OneToMany()
+	@JoinColumn(name="detalle")
+	private List<RegistroCliente> detalles;
+	
+	
 	public Persona getPersona() {
 		return persona;
 	}
@@ -68,12 +73,21 @@ public class Usuario implements Serializable {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-	public Date getFechaHistorial() {
-		return fechaHistorial;
+	public List<RegistroCliente> getDetalles() {
+		return detalles;
 	}
 
-	public void setFechaHistorial(Date fechaHistorial) {
-		this.fechaHistorial = fechaHistorial;
+	public void setDetalles(List<RegistroCliente> detalles) {
+		this.detalles = detalles;
 	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
 
 }

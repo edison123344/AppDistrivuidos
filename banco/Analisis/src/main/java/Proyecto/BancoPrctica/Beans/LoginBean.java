@@ -66,38 +66,52 @@ public class LoginBean implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-    public GestionLoginON getLoginON() {
-		return loginON;
-	}
-
-
-	public void setLoginON(GestionLoginON loginON) {
-		this.loginON = loginON;
-	}
-
-
+int n;
 public String Logeo() throws Exception {
-	this.usuario =loginON.login(email, password);
-	
-	
-	if (getEmail().equals(usuario.getPersona().getCorreo()) && getPassword().equals(usuario.getPassword())) {
+	this.usuario =loginON.comprobarEmail(email);
+	n++;
+	try {
+		if(usuario == null) {
+			FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Usuario incorecto","Usuario incorecto");
+			FacesContext.getCurrentInstance().addMessage(null, msm);
+		}
+		if (n==3 && usuario != null) {
+			FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Su cuenta a sido blokeada","Su cuenta a sido blokeada");
+			FacesContext.getCurrentInstance().addMessage(null, msm);
+			usuario.setEstado("boqueado");
+			loginON.blokeo(usuario);
+		}
 		
-		if (usuario.getTipoUsuario().equals("cliente")) {
-			
-			return "Usuario";
+	
+		
+	if (getEmail().equals(usuario.getPersona().getCorreo()) && getPassword().equals(usuario.getPassword())&&usuario.getEstado().equals("Activo")) {
+		
+		if (usuario.getTipoUsuario().equals("Usuario")) {
+			System.out.println("Sysy"+usuario.getPersona().getCorreo()+"password"+usuario.getPassword()+usuario.getTipoUsuario());	
+			return "Usuario.xhtml";
 			
 		} else if (usuario.getTipoUsuario().equals("Administrado")) {
 			
-			return "Administrador";
+			return "Administrador.xhtml";
 			
 		} else if (usuario.getTipoUsuario().equals("cajero")) {
 			
-			return "Cajero";
+			return "Cajero.xhtml";
 		}
 	}
+	
+	
+	}catch(NullPointerException e) {
 	FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
-			"usuario o contrasena inexistentes","usuario o contrasena inexistentes");
+			" contrasena inexistentes","contrasena inexistentes");
 	FacesContext.getCurrentInstance().addMessage(null, msm);
-     return null;
-}
+
+
+	}
+	
+     return "";
+	}
+
 }

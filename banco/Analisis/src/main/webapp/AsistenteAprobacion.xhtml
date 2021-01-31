@@ -49,12 +49,10 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                     </li>
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"/> <a href=""><i
-                                    class="fa fa-search"/></a> </form>
+                             <a href=""></a> </form>
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
-                                width="36" class="img-circle"/><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
+                        <a class="profile-pic" href="#"><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
                     </li>
                 </ul>
             </div>
@@ -65,20 +63,10 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
                             class="hide-menu">Nabegacion</span></h3>
                 </div>
-                <ul class="nav" id="side-menu">
+               <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Escritorio</a>
-                    </li>
-                    <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i>Login</a>
-                    </li>
-                    
-                    <li>
-                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw"
-                                aria-hidden="true"></i>Nosotros</a>
-                    </li>
+                       <a  class="waves-effect"><h:outputLink  value ="#{navegacionAsistente.Listar()}" ><i class="fa fa-credit-card-alt"/>Listar Polizas</h:outputLink> </a>
+                    </li>          
                     <li>
                         <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw"
                         aria-hidden="true"></i>Google Map</a>
@@ -91,16 +79,17 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Login</h4>
+                         <h4 class="page-title">Tipo Usuario:
+                        <b class="hidden-xs">#{loginBean.usuario.tipoUsuario}</b>
+                        </h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
-                            to Pro</a>
+                   
                         <ol class="breadcrumb">
-                            <li><a href="#">Inicio</a></li>
-                            <li class="active">Registrar</li>
+                            <li><a href=""><h:outputLink  value ="#{navegacionAsistente.Listar()}" ><i class="fa fa-credit-card-alt"/>Listar Polizas</h:outputLink> </a></li>
+                            <li class="active">Aprobacion</li>
                         </ol>
+                        
                     </div>
                 </div>
                 

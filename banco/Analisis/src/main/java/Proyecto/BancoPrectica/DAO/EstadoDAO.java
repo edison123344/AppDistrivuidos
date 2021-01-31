@@ -1,6 +1,7 @@
 package Proyecto.BancoPrectica.DAO;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -43,10 +44,23 @@ public class EstadoDAO {
 		}
 	}
 
-	public List<Estado> listaEstado() {
+	public List<Estado> listaEstado(String clave) {
 
 		try {	
-		    Query query = em.createNativeQuery("SELECT *  FROM estado ",Estado.class);
+		    Query query = em.createNativeQuery("SELECT * FROM estado, cuenta ,usuario where PK_cuenta=id_cuenta and FK_cuenta_id = user_id and password=?",Estado.class);
+		    query.setParameter(1, clave);
+		    return  query.getResultList();
+	} catch(NoResultException e) {
+	    return null;
+	  }	
+}
+	public List<Estado> listaPorFecha(String clave ,Date desde ,Date hasta ) {
+
+		try {	
+		    Query query = em.createNativeQuery("SELECT * FROM estado, cuenta ,usuario where PK_cuenta=id_cuenta and FK_cuenta_id = user_id and password = ? and registro BETWEEN ? AND ?",Estado.class);
+		    query.setParameter(1, clave);
+		    query.setParameter(2, desde);
+		    query.setParameter(3, hasta);
 		    return  query.getResultList();
 	} catch(NoResultException e) {
 	    return null;

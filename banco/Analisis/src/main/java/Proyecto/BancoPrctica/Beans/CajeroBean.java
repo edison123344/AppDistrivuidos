@@ -14,6 +14,7 @@ import javax.inject.Named;
 import Proyecto.BancoPractica.Modelo.Cuenta;
 import Proyecto.BancoPractica.Modelo.Estado;
 import Proyecto.BancoPractica.Modelo.Persona;
+import Proyecto.BancoPractica.Modelo.RegistroCliente;
 import Proyecto.BancoPractica.Modelo.Usuario;
 import Proyecto.BancoPrectica.Negocio.GestionCajeroON;
 
@@ -32,6 +33,7 @@ public class CajeroBean  implements Serializable {
 	private Estado estado;
 	private Persona persona;
 	private Usuario usuario;
+	private RegistroCliente registro;
 	/**Bean properties*/
 	private String NumeroCuenta;
 	private String monto;
@@ -50,6 +52,7 @@ public class CajeroBean  implements Serializable {
 		estado =new Estado();
 		persona = new Persona();
 		usuario = new Usuario();
+		registro = new RegistroCliente();
 	}
 	
 	public Estado getEstado() {
@@ -168,10 +171,9 @@ public class CajeroBean  implements Serializable {
 	}
 	public String crearCuenta() throws Exception {
 			ingresarRol();
-			usuario.setFechaHistorial(fechaActual());
 			usuario.setPassword(aleatorios());
 		    usuario.setTipoUsuario("Usuario");
-		    usuario.setFechaHistorial(fechaActual());
+		    usuario.setEstado("Activo");				    
 			persona.setIdCedula(cajeroON.Busqueda(Integer.parseInt(cedula)).getIdCedula());
 			usuario.setPersona(persona);
 			cajeroON.crearRol(usuario);
@@ -179,6 +181,10 @@ public class CajeroBean  implements Serializable {
 			cuenta.setNumCuenta(cedula+aleatorios());		
 			cuenta.setTipoCuenta(tipo);
 			cajeroON.Crear(cuenta);
+		    registro.setFecha(fechaActual());
+		    registro.setTpo("Activo");
+		    registro.setUsuario(usuario);
+		    cajeroON.crearhistorialPersona(registro);
 		return "CajeroCuenta";
 	}
 	//pasar metodo al paquete negosio  para la contrasena

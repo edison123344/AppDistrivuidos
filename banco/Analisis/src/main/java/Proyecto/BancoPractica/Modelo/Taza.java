@@ -2,10 +2,13 @@ package Proyecto.BancoPractica.Modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name = "taza")
@@ -16,23 +19,38 @@ public class Taza implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long IdTaza;
-	private int porsentaje;
+	@Column(name = "IdTaza")
+	@GeneratedValue(strategy= GenerationType.AUTO) 
+	private int IdTaza;
+	private double porsentaje;
 	private int desde;
 	private int hasta;
-	//@OneToOne
-	//@JoinColumn(name="`FK_idUsuario`")
-	//private Usuario usuario ;
+	@OneToOne
+	@JoinColumn(name="`FK_idUsuario`")
+	private Usuario usuario ;
 	
-	public int getDesde() {
-		return desde;
-	}
-	public long getIdTaza() {
+
+	public int getIdTaza() {
 		return IdTaza;
 	}
-	public void setIdTaza(long idTaza) {
+	public void setIdTaza(int idTaza) {
 		IdTaza = idTaza;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public double getPorsentaje() {
+		return porsentaje;
+	}
+	public void setPorsentaje(double porsentaje) {
+		this.porsentaje = porsentaje;
+	}
+	public int getDesde() {
+		return desde;
 	}
 	public void setDesde(int desde) {
 		this.desde = desde;
@@ -43,11 +61,11 @@ public class Taza implements Serializable {
 	public void setHasta(int hasta) {
 		this.hasta = hasta;
 	}
-	public int getPorsentaje() {
-		return porsentaje;
+	@Override
+	public String toString() {
+		return "Taza [IdTaza=" + IdTaza + ", porsentaje=" + porsentaje + ", desde=" + desde + ", hasta=" + hasta
+				+ ", usuario=" + usuario + "]";
 	}
-	public void setPorsentaje(int porsentaje) {
-		this.porsentaje = porsentaje;
-	}
+
 	
 }

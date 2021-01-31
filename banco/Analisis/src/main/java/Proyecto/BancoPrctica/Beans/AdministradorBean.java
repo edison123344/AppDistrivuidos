@@ -16,6 +16,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.annotation.PostConstruct;
 import Proyecto.BancoPractica.Modelo.Persona;
+import Proyecto.BancoPractica.Modelo.RegistroCliente;
+
 import Proyecto.BancoPractica.Modelo.Taza;
 import Proyecto.BancoPractica.Modelo.Usuario;
 import Proyecto.BancoPrectica.Negocio.GestionAdminON;
@@ -33,7 +35,7 @@ public class AdministradorBean implements Serializable {
 	private GestionAdminON adminON;
 	private Persona persona;
 	private Usuario usuario;
-	private List<Taza> listataza;
+	
 	/**Bean properties*/
 	private String nombre;
 	private String mail;
@@ -41,18 +43,14 @@ public class AdministradorBean implements Serializable {
 	private String cedula;
 	private String password;
 	private String tipo;
-
+	private RegistroCliente registro;
 	@PostConstruct
 	public void init() {
 		persona = new Persona();
 		usuario = new Usuario();
+		registro = new RegistroCliente();
 	}
-	public List<Taza> getListataza() {
-		return listataza;
-	}
-	public void setListataza(List<Taza> listataza) {
-		this.listataza = listataza;
-	}
+
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -108,9 +106,13 @@ public class AdministradorBean implements Serializable {
 
 	public String Ingresar() throws Exception {
 		ingresarRol();
-		usuario.setFechaHistorial(fechaActual());
+	    registro.setFecha(fechaActual());
+	    registro.setTpo("creado cuenta");
+	    registro.setUsuario(usuario);
+	    adminON.crearhistorialPersona(registro);
 		usuario.setPassword(password);
 	    usuario.setTipoUsuario(tipo);
+	    usuario.setEstado("Activo");
 		persona.setIdCedula(adminON.Busqueda(Integer.parseInt(cedula)).getIdCedula());
 		usuario.setPersona(persona);
 		adminON.crearRol(usuario);
@@ -123,8 +125,5 @@ public class AdministradorBean implements Serializable {
 		Date miFecha = formato.parse(fechaString); 
 		return miFecha;
 	}
-	private String listar() throws Exception {
-		setListataza(adminON.listarTaza());
-		return "TazaAdministrador";
-	}	
+
 }

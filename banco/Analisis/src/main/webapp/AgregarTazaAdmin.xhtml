@@ -21,10 +21,7 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 	<link href="html/css/animate.css" rel="stylesheet" />
 	<link href="html/css/style.css" rel="stylesheet" />
 	<link href="html/css/colors/default.css" id="theme" rel="stylesheet" />
-	<f:metadata>
-	<f:viewParam name="idTaza" value="#{aminTazaAgregarBean.idTaza}"></f:viewParam>
-	 <f:viewAction action="#{aminTazaAgregarBean.cargarDatos()}"/>
-	</f:metadata>
+	 
 </h:head>
 <h:body class="fix-header">
     <div class="preloader">
@@ -48,13 +45,10 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
                     <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"/> <a href=""><i
-                                    class="fa fa-search"/></a> </form>
+                        
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
-                                width="36" class="img-circle"/><b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
+                        <a class="profile-pic" href="#"> <b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
                     </li>
                 </ul>
             </div>
@@ -65,41 +59,39 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
                             class="hide-menu">Nabegacion</span></h3>
                 </div>
-                <ul class="nav" id="side-menu">
+                      <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Escritorio</a>
+                       <a  class="waves-effect"><h:outputLink  value ="#{navegacionAdministradorBean.AgrearUsuario()}" ><i class="fa fa-credit-card-alt"/>  Agrear Rol</h:outputLink> </a>
                     </li>
                     <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i>Login</a>
+                        <a  class="waves-effect"><h:outputLink value ="#{navegacionAdministradorBean.AgrearTaza()}" ><i class="fa fa-credit-card-alt"/>   Agregar Taza</h:outputLink> </a>
                     </li>
                     
                     <li>
-                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw"
-                                aria-hidden="true"></i>Nosotros</a>
+                       <a  class="waves-effect"> <h:outputLink value ="#{navegacionAdministradorBean.listarTaza()}" ><i class="fa fa-credit-card-alt"/> listar</h:outputLink> 
+                    </a>
+                    
                     </li>
                     <li>
                         <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw"
                         aria-hidden="true"></i>Google Map</a>
                     </li>
-                   
-                </ul>
+                    </ul>
             </div>
         </div>
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Login</h4>
+                         <h4 class="page-title">Tipo Usuario:
+                        <b class="hidden-xs">#{loginBean.usuario.tipoUsuario}</b>
+                        </h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
-                            to Pro</a>
+                      
                         <ol class="breadcrumb">
-                            <li><a href="#">Inicio</a></li>
-                            <li class="active">Registrar</li>
+                            <li> <a  class="waves-effect"><h:outputLink  value ="#{navegacionAdministradorBean.AgrearUsuario()}" > Inicio</h:outputLink> </a></li>
+                            <li class="active"><a  class="waves-effect"><h:outputLink value ="#{navegacionAdministradorBean.AgrearTaza()}" > Agregar Taza</h:outputLink> </a></li>
                         </ol>
                     </div>
                 </div>

@@ -4,7 +4,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"> 
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"> 
  <h:head>
       <meta charset ="utf-8"/>
 	  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -12,7 +14,7 @@
 	  <meta name="description" content=""/>
 	  <meta name="author" content=""/>
 	  <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png"/>
-	  <title>Login</title>
+	  <title>Historial</title>
 	  <link href="html/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 	  <link href="plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet"/>
 	  <link href="html/css/animate.css" rel="stylesheet"/>
@@ -41,13 +43,11 @@
                             href="javascript:void(0)"><i class="fa fa-bars"></i></a>
                     </li>
                     <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"/> <a href=""><i
-                                    class="fa fa-search"/></a> </form>
+                       
                     </li>
                     <li>
-                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img"
-                                width="36" class="img-circle"/><b class="hidden-xs">Steave</b></a>
+                        <a class="profile-pic" href="#"> <b class="hidden-xs">#{loginBean.usuario.persona.nombre}</b></a>
+                        
                     </li>
                 </ul>
             </div>
@@ -56,22 +56,15 @@
             <div class="sidebar-nav slimscrollsidebar">
                 <div class="sidebar-head">
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
-                            class="hide-menu">Nabegacion</span></h3>
+                            class="hide-menu">Navegacion</span></h3>
                 </div>
-                <ul class="nav" id="side-menu">
+                 <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
-                        <a href="dashboard.html" class="waves-effect"><i class="fa fa-clock-o fa-fw"
-                                aria-hidden="true"></i>Escritorio</a>
-                    </li>
-                    <li>
-                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw"
-                                aria-hidden="true"></i>Login</a>
-                    </li>
-                    
-                    <li>
-                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw"
-                                aria-hidden="true"></i>Nosotros</a>
-                    </li>
+                       <a  class="waves-effect"><h:outputLink  value ="#{navegacionClienteBean.Listar()}" ><i class="fa fa-credit-card-alt"/>Usuario</h:outputLink> </a>
+                    </li> 
+                     <li>
+                        <a  class="waves-effect"><h:outputLink  value ="#{navegacionClienteBean.Historial()}" ><i class="fa fa-credit-card-alt"/>Historial</h:outputLink> </a>
+                    </li>         
                     <li>
                         <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw"
                         aria-hidden="true"></i>Google Map</a>
@@ -84,15 +77,14 @@
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Login</h4>
+                        <h4 class="page-title">Tipo Usuario:</h4>
+                        <b class="hidden-xs">#{loginBean.usuario.tipoUsuario}</b>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                            class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Upgrade
-                            to Pro</a>
+                 
                         <ol class="breadcrumb">
-                            <li><a href="#">Inicio</a></li>
-                            <li class="active">Login</li>
+                            <li><h:outputLink  value ="#{navegacionClienteBean.Listar()}" ><i class="fa fa-credit-card-alt"/>Usuario</h:outputLink></li>
+                            <li class="active"><h:outputLink  value ="#{navegacionClienteBean.Historial()}" ><i class="fa fa-credit-card-alt"/>Historial</h:outputLink></li>
                         </ol>
                     </div>
                   
@@ -102,36 +94,30 @@
                         <div class="white-box">
                         <h:form id="frmcliente">  
                           <div class="table-responsive">
-				                  
-                               <h:dataTable class="table"  id="detalle" value="#{asistenteBean.listaPolizas}"  var="poliza">
+									
+							<h4 class="page-title">Historial:</h4>		
+                                   
+				                     <h:dataTable class="table"  id="detalleEstado" value="#{usuarioBean.listarRegistroClientes}"  var="historial">
                                     <h:column>
-                                        <f:facet name="header">Id</f:facet>
-                                        <label class="col-md-12">#{poliza.idPoliza}</label>
+                                        <f:facet name="header">#Id</f:facet>
+                                        <label class="col-md-12">#{historial.idRegistro}</label>
+                                    </h:column>
+                                     <h:column>
+                                        <f:facet name="header">Fecha</f:facet>
+                                        <label >#{historial.fecha}</label>
                                     </h:column>
                                     <h:column>
-                                        <f:facet name="header">Monto</f:facet>
-                                        <label class="col-md-12">#{poliza.moto}</label>
-                                    </h:column> 
-                                    <h:column>
-                                        <f:facet name="header">Plazo</f:facet>
-                                        <label class="col-md-12">#{poliza.plazo}</label>
-                                    </h:column> 
-                                    <h:column>
-                                        <f:facet name="header">Estado</f:facet>
-                                        <label class="col-md-12">#{poliza.estado}</label>
-                                    </h:column>   
-                                    
-                                    <h:column>
-                                        <f:facet name="header">Cambiar estado</f:facet>
-                                        <h:commandButton action="#{asistenteBean.editar(poliza.idPoliza)}" value="editar" />
-                                        
-                                    </h:column>                                    
+                                        <f:facet name="header">Registro</f:facet>
+                                        <label>#{historial.tpo}</label>
+                                    </h:column>                                                
 									</h:dataTable>
+                                    
                                 </div> 
-                                 
-                                <div class="col-sm-12">
-                                        <h:commandButton action="#{asistenteBean.ListarPoliza()}" value="Iniciar" />
+                                <div><h:commandButton action="#{usuarioBean.listarHistorial(loginBean.usuario.password)}" value="listar"  title="listar" />
+                                
                                 </div>
+                                	  
+					  		        
                             </h:form>  
                         </div>
                     </div>

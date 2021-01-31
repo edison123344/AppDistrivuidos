@@ -59,4 +59,48 @@ public String correo(Usuario usuario) {
      }
 
 }
+public String correoGeneral(String correo , String txt) {
+	
+	 Properties propiedad = new Properties();
+    propiedad.setProperty("mail.smtp.host", "smtp.gmail.com");
+    propiedad.setProperty("mail.smtp.starttls.enable", "true");
+    propiedad.setProperty("mail.smtp.port", "587");
+    propiedad.setProperty("mail.smtp.auth", "true");
+    
+    Session sesion = Session.getDefaultInstance(propiedad);
+    
+    String correoEnvia = "edisonezequiel1995@gmail.com";
+    String contrasena = "cAwxyx-xawny3-dunkam";
+    String destinatario = correo;
+    String asunto ="Clave Cuenta";
+    String mensaje =txt;
+    
+    
+    MimeMessage mail = new MimeMessage(sesion);
+    
+    try {
+        mail.setFrom(new InternetAddress (correoEnvia));
+        mail.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
+        mail.setSubject(asunto);
+        mail.setText(mensaje);
+        
+        
+        Transport transporte = sesion.getTransport("smtp");
+        transporte.connect(correoEnvia,contrasena);
+        transporte.sendMessage(mail, mail.getRecipients(Message.RecipientType.TO));
+        transporte.close();
+        
+        return  "Correo enviado";
+        
+        
+        
+        
+        
+    } catch (AddressException ex) {
+        return ex.getMessage();
+    } catch (MessagingException ex) {
+   	 return ex.getMessage();
+    }
+
+}
 }

@@ -1,6 +1,8 @@
 package Proyecto.BancoPrctica.Beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -8,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import Proyecto.BancoPractica.Modelo.Taza;
+import Proyecto.BancoPractica.Modelo.Usuario;
 import Proyecto.BancoPrectica.Negocio.GestionAdminON;
 
 @Named
@@ -20,30 +23,34 @@ public class AminTazaAgregarBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private GestionAdminON adminON;
-	private Taza taza;
-	private String idTaza;//parametro de identificacion
-	private int datosTaza;
+	private double datosTaza;
 	private int desde;
 	private int hasta;
-	
-	@PostConstruct
-	public void init() {
-		taza=new Taza();
+	private List<Taza> listataza;
+	/*@PostConstruct
+	public void init()  {
+		//listataza = new ArrayList<Taza>();
+		try {
+			listar();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
+
+	public List<Taza> getListataza() {
+		return listataza;
 	}
 
-	public String getIdTaza() {
-		return idTaza;
+	public void setListataza(List<Taza> listataza) {
+		this.listataza = listataza;
 	}
 
-	public void setIdTaza(String idTaza) {
-		this.idTaza = idTaza;
-	}
-
-	public int getDatosTaza() {
+	public double getDatosTaza() {
 		return datosTaza;
 	}
 
-	public void setDatosTaza(int datosTaza) {
+	public void setDatosTaza(double datosTaza) {
 		this.datosTaza = datosTaza;
 	}
 
@@ -62,19 +69,27 @@ public class AminTazaAgregarBean implements Serializable {
 	public void setHasta(int hasta) {
 		this.hasta = hasta;
 	}
+
 	public String IngresoTaza() throws Exception {
+	   Taza taza =new Taza();
 		taza.setPorsentaje(datosTaza);
 		taza.setDesde(desde);
-		taza.setHasta(hasta);			
-		adminON.crearTaza(taza);
+		taza.setHasta(hasta);
+		System.out.println(taza.toString());
+		this.adminON.crearTaza(taza);
 		
-		return"AgregarTazaAdmin";
+		return"AgregarTazaAdmin.xhtml";
 	}
-	public String editar(String idTaza ) {
+	
+	public String Eliminar(int id ) throws Exception {
+		adminON.borrar(id);
+		listataza = new ArrayList<Taza>();
+		listar();
+		return "TazaAdministrador";
+	}
+	public String listar() throws Exception {
+		listataza=adminON.listarTaza();
 		
-		return "AgregarTazaAdmin";
-	}
-	public String cargarDatos() {
-		return null;
-	}
+	return "TazaAdministrador";
+}	
 }
