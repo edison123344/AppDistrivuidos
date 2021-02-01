@@ -28,8 +28,12 @@ public class GestorClienteON {
 		return registroClienteDAO.listarHistorial(clave);
 	}
 	////listar usuario pore terminar
+	/**
+	 * resibe la lista de polizas pertenesientes al cliente logeado
+	 * @return lista polizas
+	 */
 	public List<Poliza> ListarPoliza(){
-		return polizaDAO.listaPoliza();
+		return polizaDAO.listaPolizaCliente();
 	}
 	public List<Estado> listaTransacciones(String clave) {
         return estado.listaEstado(clave); 

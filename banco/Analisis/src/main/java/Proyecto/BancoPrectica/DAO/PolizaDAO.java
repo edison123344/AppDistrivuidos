@@ -40,7 +40,21 @@ public class PolizaDAO {
 	    return null;
 	  }	
 }
+	/**
+	 * listar polisa de cliente por id del cliente
+	 * @return lista cliente
+	 */
 	
+	
+	public List<Poliza> listaPolizaCliente() {
+
+		try {	
+		    Query query = em.createNativeQuery("SELECT *  FROM poliza ",Poliza.class);
+		    return  query.getResultList();
+	} catch(NoResultException e) {
+	    return null;
+	  }	
+}
 	public Poliza buscar(long id) throws Exception {
 		try {
 			

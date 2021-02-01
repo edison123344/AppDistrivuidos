@@ -24,6 +24,7 @@ public class Poliza implements Serializable {
     private Double moto;
 	private Double Total;
 	private Double Ganancia;
+	//private Usuario usuario;
 	public long getIdPoliza() {
 		return IdPoliza;
 	}

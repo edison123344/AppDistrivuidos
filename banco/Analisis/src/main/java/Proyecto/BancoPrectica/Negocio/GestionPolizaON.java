@@ -43,9 +43,7 @@ public Poliza calcularPoliza(double monto, int dias) throws Exception {
 public void GuardarPoliza(Poliza poliza) throws Exception {
 	polizaDAO.insertar(poliza);
 }
-public void ActualizarPoliza() {
-	
-}
+
 public void listarPoliza() {
 	
 }

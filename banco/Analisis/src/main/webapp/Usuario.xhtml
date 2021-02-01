@@ -96,29 +96,30 @@
                           <div class="table-responsive">
                        
                            <h4 class="page-title">Resumen Poliza:</h4>
-                                 <!--    <h:dataTable class="table"  id="detallePoliza" value="#{usuarioBean.listaPolizas}"  var="poliza">
-                                    <h:column>
-                                        <f:facet name="header">Id</f:facet>
-                                        <label class="col-md-12">#{poliza.idPoliza}</label>
+                              <h:dataTable class="table"  id="EstadoPoliza" value="#{usuarioBean.listaPoliza}"  var="poliza">
+								 <h:column>
+                                        <f:facet name="header">estado</f:facet>
+                                        <label class="col-md-12">#{poliza.estado}</label>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Monto</f:facet>
                                         <label class="col-md-12">#{poliza.moto}</label>
                                     </h:column> 
                                     <h:column>
-                                        <f:facet name="header">Plazo</f:facet>
-                                        <label class="col-md-12">#{poliza.plazo}</label>
+                                        <f:facet name="header">Ganancia</f:facet>
+                                        <label class="col-md-12">#{poliza.ganancia}</label>
                                     </h:column> 
                                     <h:column>
-                                        <f:facet name="header">Estado</f:facet>
-                                        <label class="col-md-12">#{poliza.estado}</label>
+                                        <f:facet name="header">total</f:facet>
+                                        <label class="col-md-12">#{poliza.total}</label>
                                     </h:column>   
                                       <h:column>
                                         <f:facet name="header">Fecha vencimiento</f:facet>
                                         <label class="col-md-12">#{poliza.fechaVencimiento}</label>
                                     </h:column>                                 
-									</h:dataTable>-->
-									
+									</h:dataTable>
+									</div>
+							 <div class="table-responsive">		
 							<h4 class="page-title">Datos Cuenta:</h4>		
                                    
 				                     <h:dataTable class="table"  id="detalleEstado" value="#{usuarioBean.listarEstado}"  var="estado">

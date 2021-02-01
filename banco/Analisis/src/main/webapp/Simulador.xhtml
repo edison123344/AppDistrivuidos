@@ -115,32 +115,32 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 										value="Simular" />
 								</div>
 								
-								  <h:dataTable class="table"  id="detalleEstado" value="#"  var="estado">
+								  <h:dataTable class="table"  id="detalleEstado" value="#{polizaBean.poliza}"  var="poliza">
 								 <h:column>
-                                        <f:facet name="header">Id</f:facet>
-                                        <label class="col-md-12">#</label>
+                                        <f:facet name="header">estado</f:facet>
+                                        <label class="col-md-12">#{poliza.estado}</label>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">Monto</f:facet>
-                                        <label class="col-md-12">#</label>
+                                        <label class="col-md-12">#{poliza.moto}</label>
                                     </h:column> 
                                     <h:column>
-                                        <f:facet name="header">Total</f:facet>
-                                        <label class="col-md-12">#</label>
+                                        <f:facet name="header">Ganancia</f:facet>
+                                        <label class="col-md-12">#{poliza.ganancia}</label>
                                     </h:column> 
                                     <h:column>
-                                        <f:facet name="header">Estado</f:facet>
-                                        <label class="col-md-12">#</label>
+                                        <f:facet name="header">total</f:facet>
+                                        <label class="col-md-12">#{poliza.total}</label>
                                     </h:column>   
                                       <h:column>
                                         <f:facet name="header">Fecha vencimiento</f:facet>
-                                        <label class="col-md-12">#</label>
+                                        <label class="col-md-12">#{poliza.fechaVencimiento}</label>
                                     </h:column>                                 
 									</h:dataTable>
 									
 								<div class="form-group">
 									<h:commandButton class="btn btn-success"
-										action="#"
+										action="#{polizaBean.Guardar(polizaBean.poliza)}"
 										value="Solisitar Poliza" />
 								</div>
 							</h:form>

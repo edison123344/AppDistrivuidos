@@ -14,6 +14,8 @@ import Proyecto.BancoPractica.Modelo.RegistroCliente;
 import Proyecto.BancoPrectica.Negocio.GestorClienteON;
 
 
+
+
 @Named
 @SessionScoped
 public class UsuarioBean implements Serializable{ 
@@ -25,19 +27,23 @@ public class UsuarioBean implements Serializable{
 	private GestorClienteON clienteON;
 	private Date Desde;
 	private Date Hasta;
-	private List<Poliza> listaPolizas;
+	private List<Poliza>listaPoliza;
 	private List<Estado> listarEstado;
 	private List<RegistroCliente> ListarRegistroClientes;
-	//@PostConstruct
-	//public void init()  {
-		
-	//}
-	
-	public List<Poliza> getListaPolizas() {
-		return listaPolizas;
+	@PostConstruct
+	public void init()  {
+	 ListarPoliza() ;
 	}
+	
+	
 	public List<RegistroCliente> getListarRegistroClientes() {
 		return ListarRegistroClientes;
+	}
+	public List<Poliza> getListaPoliza() {
+		return listaPoliza;
+	}
+	public void setListaPoliza(List<Poliza> listaPoliza) {
+		this.listaPoliza = listaPoliza;
 	}
 	public void setListarRegistroClientes(List<RegistroCliente> listarRegistroClientes) {
 		ListarRegistroClientes = listarRegistroClientes;
@@ -54,9 +60,7 @@ public class UsuarioBean implements Serializable{
 	public void setHasta(Date hasta) {
 		Hasta = hasta;
 	}
-	public void setListaPolizas(List<Poliza> listaPolizas) {
-		this.listaPolizas = listaPolizas;
-	}
+	
 	public List<Estado> getListarEstado() {
 		return listarEstado;
 	}
@@ -64,7 +68,7 @@ public class UsuarioBean implements Serializable{
 		this.listarEstado = listarEstado;
 	}
 	public String ListarPoliza()  {
-		listaPolizas=clienteON.ListarPoliza();
+		listaPoliza=clienteON.ListarPoliza();
 		return "";
 	}
 	public String ListarPorFecha(String id) {
