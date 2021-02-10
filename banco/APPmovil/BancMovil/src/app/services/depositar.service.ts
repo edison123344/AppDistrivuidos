@@ -6,4 +6,9 @@ import { Injectable } from '@angular/core';
 export class DepositarService {
 
   constructor(private http: HttpClient) { }
+  listarPoliza(){}
+  listarcuenta(){}
+  trasferencia(){}
+  login(){}
+  cambiarClave(){}
 }

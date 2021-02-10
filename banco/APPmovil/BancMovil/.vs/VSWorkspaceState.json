@@ -3,8 +3,13 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\consutar-saldo"
+    "\\src\\app\\consutar-saldo",
+    "\\src\\app\\folder",
+    "\\src\\app\\services",
+    "\\src\\assets",
+    "\\src\\environments",
+    "\\src\\theme"
   ],
-  "SelectedNode": "\\src\\app\\app.component.ts",
+  "SelectedNode": "\\src\\app\\services\\depositar.service.ts",
   "PreviewInSolutionExplorer": false
 }
