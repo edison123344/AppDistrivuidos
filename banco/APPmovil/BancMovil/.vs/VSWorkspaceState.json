@@ -5,11 +5,11 @@
     "\\src\\app",
     "\\src\\app\\consutar-saldo",
     "\\src\\app\\folder",
-    "\\src\\app\\services",
-    "\\src\\assets",
-    "\\src\\environments",
-    "\\src\\theme"
+    "\\src\\app\\model",
+    "\\src\\app\\pages",
+    "\\src\\app\\pages\\listado-datos",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\services\\depositar.service.ts",
+  "SelectedNode": "\\src\\app\\model\\Poliza.ts",
   "PreviewInSolutionExplorer": false
 }

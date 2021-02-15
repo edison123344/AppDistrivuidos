@@ -64,7 +64,7 @@ public class GestionLoginON {
 	
 	public void recuperarClave(Usuario usuario) throws Exception {
 		
-	    //usuarioDAO.actualizar(usuario);
+	    usuarioDAO.actualizar(usuario);
 	    usuario.getPersona().getCorreo();
 		RegistroCliente registroCiente =new RegistroCliente();
 		registroCiente.setFecha(fechaActual());

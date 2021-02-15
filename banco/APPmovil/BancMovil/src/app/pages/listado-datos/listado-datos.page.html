@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>listado Informacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Informacion Cuenta</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-item *ngFor="let es of Estado | async">
+      <ion-avatar slot="start">
+
+      </ion-avatar>
+      <ion-label>
+        <h2>id:{{es.idEstad}}</h2>
+        <h3>saldo:{{es.saldo}}</h3>
+        <h3>tipo:{{es.tipo}}</h3>
+        <h3>dia:{{es.fecha}}</h3>
+      </ion-label>
+    </ion-item>
+    <ion-list-header>
+     Polizas
+    </ion-list-header>
+
+    <ion-item  *ngFor="let pl of Poliza | async">
+      <ion-avatar slot="start">
+      </ion-avatar>
+      <ion-label>
+        <h2>idPolisa:{{pl.idPolisa}}</h2>
+        <h3>estado:{{pl.estado}}</h3>
+        <h3>fechVencimiento:{{pl.fechVencimiento}}</h3>
+        <h3>moveTototal:{{pl.moveTototal}}</h3>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+

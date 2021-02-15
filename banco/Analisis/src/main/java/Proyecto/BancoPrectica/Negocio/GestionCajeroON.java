@@ -40,15 +40,49 @@ public class GestionCajeroON {
 	private RegistroClienteDAO regitroCienteDAO;
 	
 	public boolean Depocito(Estado estado) throws Exception {
-		return estadoDAO.insertar(estado);
+		return estadoDAO.insertar(CalcularDeposito( estado));
 	}
 		
+	
+	public Estado CalcularDeposito(Estado estado) throws Exception {
+		Estado anterior= new Estado();
+		Estado actual= new Estado();
+
+		anterior=estadoDAO.listarEstadoD(estado.getCuenta().getNumCuenta());
+		if (anterior==null) {
+			return estado;
+		}else {
+			actual.setSaldo(estado.getDeposito()+anterior.getSaldo());
+			actual.setRetiro(estado.getRetiro());
+			actual.setDeposito(estado.getDeposito());
+			actual.setTipo(estado.getTipo());		
+			actual.setCuenta(estado.getCuenta());
+			actual.setFecha(estado.getFecha());
+			return actual;
+		}
+	}
+	public boolean Retiro(Estado estado) throws Exception {
+		return estadoDAO.insertar(CalcularRetiro( estado));
+	}
+	public Estado CalcularRetiro(Estado estado) throws Exception {
+		Estado anterior= new Estado();
+		Estado actual= new Estado();
+	
+		anterior=estadoDAO.listarEstadoD(estado.getCuenta().getNumCuenta());
+		if (anterior==null) {
+			return estado;
+		}else {
+			actual.setSaldo(anterior.getSaldo()-estado.getRetiro());
+			actual.setRetiro(estado.getRetiro());
+			actual.setDeposito(estado.getDeposito());
+			actual.setTipo(estado.getTipo());		
+			actual.setCuenta(estado.getCuenta());
+			actual.setFecha(estado.getFecha());
+			return actual;
+		}
+	}
 	public Cuenta BuscarCuenta(String num) throws Exception {
 		return cuentaDAO.Buscar(num);
-	}
-	
-	public boolean Retiro(Estado estado) throws Exception {
-		return estadoDAO.insertar(estado);
 	}
 	public boolean crearRolPersona(Persona p) throws Exception {
 		return personaDAO.insertar(p);

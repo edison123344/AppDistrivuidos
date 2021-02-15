@@ -17,22 +17,23 @@ public class Poliza implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long IdPoliza;
+	@GeneratedValue(strategy= GenerationType.AUTO) 
+    private int idPoliza;
 	private String estado;
 	private Date fechaVencimiento;
     private Double moto;
 	private Double Total;
 	private Double Ganancia;
 	//private Usuario usuario;
-	public long getIdPoliza() {
-		return IdPoliza;
-	}
-	public void setIdPoliza(long idPoliza) {
-		IdPoliza = idPoliza;
-	}
+	
 	public String getEstado() {
 		return estado;
+	}
+	public int getIdPoliza() {
+		return idPoliza;
+	}
+	public void setIdPoliza(int idPoliza) {
+		this.idPoliza = idPoliza;
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
@@ -63,7 +64,7 @@ public class Poliza implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Poliza [IdPoliza=" + IdPoliza + ", estado=" + estado + ", fechaVencimiento=" + fechaVencimiento
+		return "Poliza [IdPoliza=" + idPoliza + ", estado=" + estado + ", fechaVencimiento=" + fechaVencimiento
 				+ ", moto=" + moto + ", Total=" + Total + ", Ganancia=" + Ganancia + "]";
 	}
 

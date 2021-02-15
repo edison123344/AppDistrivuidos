@@ -1,5 +1,7 @@
 package Proyecto.BancoPrctica.Beans;
-
+/**
+ * clase que getiona la recuperasion del usuario por medio dela web
+ */
 import java.io.Serializable;
 import java.util.Random;
 
@@ -38,7 +40,11 @@ public class loginGestionBean implements Serializable {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
+/**
+ * recuperaccion del usuario por medio del corerreo y envio al coreo
+ * @return usaurio
+ * @throws Exception
+ */
 	public String recuperacion() throws Exception {
 		usuario = loginON.comprobarEmail(getCorreo());
 		if(usuario == null) {
@@ -59,6 +65,10 @@ public class loginGestionBean implements Serializable {
 		}
 		return "";
 	}
+	/***
+	 * crea una nueva clve para ser enviada por coreo
+	 * @return clave nueva
+	 */
 	public String aleatorios() {	
 		 String banco = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		     Random rand = new Random();

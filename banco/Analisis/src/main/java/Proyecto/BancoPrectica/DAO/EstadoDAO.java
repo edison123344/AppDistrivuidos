@@ -1,6 +1,5 @@
 package Proyecto.BancoPrectica.DAO;
 
-
 import java.util.Date;
 import java.util.List;
 
@@ -65,6 +64,21 @@ public class EstadoDAO {
 	} catch(NoResultException e) {
 	    return null;
 	  }	
+		
+	}
+		public Estado listarEstadoD(String cuenta) throws Exception {
+
+			try {	
+				    Query query = em.createNativeQuery("select * from estado  where  idEstado=(select max(idEstado) from estado,cuenta where PK_cuenta=?) ",Estado.class);
+				    query.setParameter(1, cuenta);
+				   
+				    return (Estado) query.getSingleResult();
+			} catch(NoResultException e) {
+			
+			    return null;
+			  }
+			
 }
+	
 
 }

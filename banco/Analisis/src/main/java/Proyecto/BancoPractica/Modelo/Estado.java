@@ -1,6 +1,5 @@
 package Proyecto.BancoPractica.Modelo;
 
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;

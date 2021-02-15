@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'consutar-saldo',
     loadChildren: () => import('./consutar-saldo/consutar-saldo.module').then( m => m.ConsutarSaldoPageModule)
+  },
+  {
+    path: 'listado-datos',
+    loadChildren: () => import('./pages/listado-datos/listado-datos.module').then( m => m.ListadoDatosPageModule)
   }
 ];
 
