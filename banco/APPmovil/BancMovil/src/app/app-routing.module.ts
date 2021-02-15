@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'listado-datos',
     loadChildren: () => import('./pages/listado-datos/listado-datos.module').then( m => m.ListadoDatosPageModule)
+  },
+  {
+    path: 'trasnferencia',
+    loadChildren: () => import('./pages/trasnferencia/trasnferencia.module').then( m => m.TrasnferenciaPageModule)
   }
 ];
 
