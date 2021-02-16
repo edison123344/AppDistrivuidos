@@ -38,6 +38,12 @@ public class TransaccionREST {
 	 
 		private List<Poliza>listaPoliza;
 		private List<Estado> listarEstado;
+		/**
+		 * resive la informasion de una transferencia echa por la parate movil del sistema
+		 * @param trans
+		 * @return mensaje
+		 * @throws Exception
+		 */
 	    @POST
 		@Path("transferencia")
 		@Consumes("application/json")
@@ -45,9 +51,9 @@ public class TransaccionREST {
 		public Mensaje Transferencia(Transferencia trans) throws Exception {
 	    	Mensaje m = new Mensaje();
 			try { 
-				
+				System.out.println(clienteON.transferencia(trans));
 				m.setCode("ok");
-				m.setMessage(clienteON.transferencia(trans));
+				m.setMessage("transferencia exitosa");
 				return m;
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
@@ -76,14 +82,21 @@ public class TransaccionREST {
 	     * @return lista dela cuenta
 	     */
 	    @GET
-	    @Path("listarEstador")
+	    @Path("listarEstado")
 	    @Produces("application/json")
 	    //@Consumes("application/json")
-	    public List<Estado> listarSaldo() {
+	    public List<Estado> listarSaldo(@QueryParam("clave")String clave) {
 
-	    	
-	    			System.out.println("paso"+listarEstado.size());
-	    			return listarEstado;
+	    	try { 
+	    		System.out.println("clave"+clave);
+				listarEstado=clienteON.prueba();
+				
+				return listarEstado;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			} 
 	    }
 	    //wxZpI
 	    /**
@@ -94,26 +107,19 @@ public class TransaccionREST {
 	    @GET
 	    @Path("listarPoliza")
 	    @Produces("application/json")
-	    public List<Poliza> listarPoliza() {
-	    	return null;
+	    public List<Poliza> listarPoliza(@QueryParam("clave")String clave) {
+	    	try { 
+	    		System.out.println("clave"+clave);
+	    		listaPoliza=clienteON.PruebaPoliza();
+				
+				return listaPoliza;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			} 
 	    }
-	    @GET
-	    @Path("lista")
-	    @Produces("application/json")
-	    @Consumes("application/json")
-	   
-	    public List<Estado> listarPrueba() {
-	    	Estado es=new Estado();
-	    			try { 
-	    				
-	    				
-	    				return listarEstado;
-	    			} catch (Exception e) {
-	    				// TODO Auto-generated catch block
-	    				e.printStackTrace();
-	    				return null;
-	    			} 
-	    }
+	  
 	    /**
 	     * metodo que se usarra para recuperrar la clave del usuario
 	     * @param correo
@@ -127,6 +133,8 @@ public class TransaccionREST {
 	    	Mensaje m = new Mensaje();
 			try {
 				System.out.println("correo"+correo);
+				//desbloquear 
+				//clienteON.recuperacion(correo);
 				m.setCode("ok");
 				m.setMessage("Actualizado");
 				return m;
@@ -146,21 +154,7 @@ public class TransaccionREST {
 		public void setListarEstado(List<Estado> listarEstado) {
 			this.listarEstado = listarEstado;
 		}
-		/*@JsonCreator
-	    public Estado(
-	            @JsonProperty("idEstado") final int idEstado,
-	            @JsonProperty("Saldo") final int Saldo,
-	            @JsonProperty("retiro") final int  retiro,
-	            @JsonProperty("deposito") final int deposito, 
-	    		@JsonProperty("Tipo" ) final String Tipo,
-				@JsonProperty("Fecha") final Date Fecha){
-			this.idEstado=idEstado;
-			this.Saldo=Saldo;
-			this.retiro=retiro;
-			this.deposito=deposito;
-			this.Tipo=Tipo;
-			this.Fecha=Fecha;*/
-		
+
 		
 	    
 }

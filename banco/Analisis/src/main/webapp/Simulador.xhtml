@@ -58,13 +58,17 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                     <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span
                             class="hide-menu">Nabegacion</span></h3>
                 </div>
-                 <ul class="nav" id="side-menu">
+                <ul class="nav" id="side-menu">
                     <li style="padding: 70px 0 0;">
                        <a  class="waves-effect"><h:outputLink  value ="#{navegacionClienteBean.Listar()}" ><i class="fa fa-credit-card-alt"/>Usuario</h:outputLink> </a>
                     </li> 
                      <li>
                         <a  class="waves-effect"><h:outputLink  value ="#{navegacionClienteBean.Historial()}" ><i class="fa fa-credit-card-alt"/>Historial</h:outputLink> </a>
                     </li>         
+                 
+                  <li>
+                        <a  class="waves-effect"><h:outputLink  value ="#{navegacionClienteBean.CrearPoliza()}" ><i class="fa fa-credit-card-alt"/>Poliza</h:outputLink> </a>
+                    </li>
                     <li>
                         <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw"
                         aria-hidden="true"></i>Google Map</a>
@@ -135,12 +139,13 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                                       <h:column>
                                         <f:facet name="header">Fecha vencimiento</f:facet>
                                         <label class="col-md-12">#{poliza.fechaVencimiento}</label>
+                                       
                                     </h:column>                                 
 									</h:dataTable>
 									
 								<div class="form-group">
 									<h:commandButton class="btn btn-success"
-										action="#{polizaBean.Guardar(polizaBean.poliza)}"
+										action="#{polizaBean.Guardar(polizaBean.poliza,loginBean.usuario)}"
 										value="Solisitar Poliza" />
 								</div>
 							</h:form>

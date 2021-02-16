@@ -6,9 +6,18 @@ import javax.jws.WebService;
 import Proyecto.BancoPractica.Modelo.Cuenta;
 import Proyecto.BancoPractica.Modelo.Estado;
 import Proyecto.BancoPrectica.Negocio.GestionCajeroON;
-
+/**
+ * 
+ * @author edison
+ *
+ */
 @WebService
 public class CuentaServicesSOAP {
+	
+	
+	/**
+	 * clase SOAP
+	 */
 	@Inject
 	private GestionCajeroON cajeroON;
 	

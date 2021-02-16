@@ -9,23 +9,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
+/**
+ * 
+ * @author edison
+ *
+ */
 
 @Entity(name = "Estado")
 public class Estado implements Serializable {
 
 	/**
-	 * 
+	 * clase que almasenara temporal mente el formuralio de todo lo referente ala cuenta del usuario i sera requerido segun el requerimiento del sistema
 	 */
 	private static final long serialVersionUID = 1L;
     @Id
 	@GeneratedValue(strategy= GenerationType.AUTO) 
     private int idEstado;
-	private int Saldo;
+	private Double Saldo;
 	@Column(name = "mt_retiro")
-    private int retiro;
+    private Double retiro;
 	@Column(name = "mt_deposito")
-	private int deposito;
+	private Double deposito;
 	@Column(name = "tipo")
 	private String Tipo;
 	@OneToOne
@@ -48,22 +52,22 @@ public class Estado implements Serializable {
 		Fecha = fecha;
 	}
 
-	public int getSaldo() {
+	public Double getSaldo() {
 		return Saldo;
 	}
-	public void setSaldo(int saldo) {
+	public void setSaldo(Double saldo) {
 		Saldo = saldo;
 	}
-	public int getRetiro() {
+	public Double getRetiro() {
 		return retiro;
 	}
-	public void setRetiro(int retiro) {
+	public void setRetiro(Double retiro) {
 		this.retiro = retiro;
 	}
-	public int getDeposito() {
+	public Double getDeposito() {
 		return deposito;
 	}
-	public void setDeposito(int deposito) {
+	public void setDeposito(Double deposito) {
 		this.deposito = deposito;
 	}
 	public String getTipo() {
@@ -77,6 +81,11 @@ public class Estado implements Serializable {
 	}
 	public void setIdEstado(int idEstado) {
 		this.idEstado = idEstado;
+	}
+	@Override
+	public String toString() {
+		return "Estado [idEstado=" + idEstado + ", Saldo=" + Saldo + ", retiro=" + retiro + ", deposito=" + deposito
+				+ ", Tipo=" + Tipo + ", cuenta=" + cuenta + ", Fecha=" + Fecha + "]";
 	}
 
 }

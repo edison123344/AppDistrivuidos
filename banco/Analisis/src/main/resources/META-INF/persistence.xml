@@ -38,7 +38,7 @@
          <property name="hibernate.globally_quoted_identifiers" value="false"/>
          <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
          <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testdb"/>
-         <property name="javax.persistence.schema-generation.database.action" value="create"/>
+         <property name="javax.persistence.schema-generation.database.action" value="none"/>
       </properties>
    </persistence-unit>
 </persistence>

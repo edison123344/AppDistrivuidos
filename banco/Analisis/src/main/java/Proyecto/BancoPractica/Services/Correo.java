@@ -1,6 +1,10 @@
 package Proyecto.BancoPractica.Services;
 
-
+/**
+ * 
+ * @author edison
+ *
+ */
 import java.util.Properties;
 
 import javax.ejb.Stateless;
@@ -15,6 +19,11 @@ import javax.mail.internet.MimeMessage;
 import Proyecto.BancoPractica.Modelo.Usuario;
 @Stateless
 public class Correo {
+	/**
+	 * metodo usado para enviar los datos del usuario al correo cuando sea nesesario o cuando se cree una nueva cuenta
+	 * @param usuario
+	 * @return
+	 */
 public String correo(Usuario usuario) {
 	
 	 Properties propiedad = new Properties();
@@ -59,6 +68,12 @@ public String correo(Usuario usuario) {
      }
 
 }
+/**
+ * metodo general para ser usado en el envio de mensajes atraves del correo
+ * @param correo
+ * @param txt
+ * @return
+ */
 public String correoGeneral(String correo , String txt) {
 	
 	 Properties propiedad = new Properties();

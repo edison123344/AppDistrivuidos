@@ -30,9 +30,10 @@ public class UsuarioBean implements Serializable{
 	private List<Poliza>listaPoliza;
 	private List<Estado> listarEstado;
 	private List<RegistroCliente> ListarRegistroClientes;
+	private String clave;
 	@PostConstruct
 	public void init()  {
-	 ListarPoliza() ;
+		 ListarPorFecha(clave);
 	}
 	
 	
@@ -68,7 +69,7 @@ public class UsuarioBean implements Serializable{
 		this.listarEstado = listarEstado;
 	}
 	public String ListarPoliza()  {
-		listaPoliza=clienteON.ListarPoliza();
+		//listaPoliza=clienteON.ListarPoliza();
 		return "";
 	}
 	public String ListarPorFecha(String id) {
@@ -78,9 +79,10 @@ public class UsuarioBean implements Serializable{
 		return"";
 	}
 
-	public String editar(String id ) {
+	public String editar(String id ) throws Exception {
 		System.out.println(id);
 		listarEstado=clienteON.listaTransacciones(id);
+		listaPoliza=clienteON.ListarPoliza(id);
 		System.out.println("lista");
 		return "";
 	} 

@@ -8,12 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author edison
+ *
+ */
 @Entity(name = "poliza")
 @Table(name = "poliza ")
 public class Poliza implements Serializable {
 	/**
-	 * 
+	 * clase que almasenara temporal mente los datos de la poliza y sera usada segun el requerimiento del sistema
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -24,7 +28,7 @@ public class Poliza implements Serializable {
     private Double moto;
 	private Double Total;
 	private Double Ganancia;
-	//private Usuario usuario;
+	private Usuario usuario;
 	
 	public String getEstado() {
 		return estado;
@@ -61,6 +65,13 @@ public class Poliza implements Serializable {
 	}
 	public void setGanancia(Double ganancia) {
 		Ganancia = ganancia;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	@Override
 	public String toString() {

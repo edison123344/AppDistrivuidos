@@ -20,6 +20,7 @@ import org.primefaces.model.UploadedFile;
 import Proyecto.BancoPrectica.Negocio.GestionCajeroON;
 import Proyecto.BancoPrectica.Negocio.GestionPolizaON;
 import Proyecto.BancoPractica.Modelo.Poliza;
+import Proyecto.BancoPractica.Modelo.Usuario;
 @Named
 @SessionScoped
 @ManagedBean
@@ -76,7 +77,15 @@ public class PolizaBean implements Serializable {
 		
 		return"Simulador.xhtml";
 	}
-	public String Guardar(Poliza poliza) throws Exception {
+	/**
+	 * guarda la informacion de la poliza
+	 * @param poliza
+	 * @param usuario
+	 * @return
+	 * @throws Exception
+	 */
+	public String Guardar(Poliza poliza,Usuario usuario) throws Exception {
+		poliza.setUsuario(usuario);
 		gestionPolizaON.GuardarPoliza(poliza);
 		return"";
 	}

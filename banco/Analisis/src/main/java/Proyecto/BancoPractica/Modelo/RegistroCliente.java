@@ -9,11 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+/**
+ * 
+ * @author edison
+ *
+ */
 @Entity(name = "RegistroCliente")
 @Table ( name  =  "RegistroCliente" )
 public class RegistroCliente implements Serializable {
 	/**
-	 * 
+	 * clase que almasenara todos los registros del usuario y sera usada segun el sistema lo requiera
 	 */
 	private static final long serialVersionUID = 1L;
 

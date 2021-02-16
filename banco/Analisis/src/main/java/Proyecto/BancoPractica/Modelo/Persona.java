@@ -6,12 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author edison
+ *
+ */
 @Entity(name = "`persona`")
 @Table ( name  =  "Persona " )
 public class Persona implements Serializable {
 	/**
-	 * 
+	 * clase que sera usado para guardar temporalmente los datos de la persona y sera usada segun el requerimiento del sistema
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -54,6 +58,12 @@ public class Persona implements Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [idCedula=" + idCedula + ", nombre=" + nombre + ", telefono=" + telefono + ", correo=" + correo
+				+ "]";
 	}
 
 

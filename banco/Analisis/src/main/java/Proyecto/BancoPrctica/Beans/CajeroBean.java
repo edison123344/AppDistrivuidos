@@ -36,7 +36,7 @@ public class CajeroBean  implements Serializable {
 	private RegistroCliente registro;
 	/**Bean properties*/
 	private String NumeroCuenta;
-	private String monto;
+	private Double monto;
 	private String nombre;
 	private String mail;
 	private String telefono;
@@ -129,10 +129,10 @@ public class CajeroBean  implements Serializable {
 	public void setNumeroCuenta(String numeroCuenta) {
 		NumeroCuenta = numeroCuenta;
 	}
-	public String getMonto() {
+	public Double getMonto() {
 		return monto;
 	}
-	public void setMonto(String monto) {
+	public void setMonto(Double monto) {
 		this.monto = monto;
 	}
 	
@@ -140,7 +140,7 @@ public class CajeroBean  implements Serializable {
 		cuenta.setNumCuenta(getNumeroCuenta());
 		estado.setCuenta(cuenta);
 		estado.setFecha(fechaActual());
-		estado.setDeposito(Integer.parseInt(getMonto()));
+		estado.setDeposito(getMonto());
 		estado.setTipo("Deposito");
 	    cajeroON.Depocito(estado);
 		return "cajero";
@@ -156,7 +156,7 @@ public class CajeroBean  implements Serializable {
 		cuenta.setNumCuenta(getNumeroCuenta());
 		estado.setCuenta(cuenta);
 		estado.setFecha(fechaActual());
-		estado.setRetiro(Integer.parseInt(getMonto()));
+		estado.setRetiro(getMonto());
 		estado.setTipo("Retiro");
 	    cajeroON.Retiro(estado);
 		return "cajero";

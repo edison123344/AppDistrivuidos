@@ -13,13 +13,25 @@ import Proyecto.BancoPractica.Modelo.Estado;
 import Proyecto.BancoPractica.Modelo.Persona;
 import Proyecto.BancoPractica.Modelo.Usuario;
 
-
+/**
+ * 
+ * @author edison
+ *
+ */
 
 @Stateless
 public class EstadoDAO {
+	/**
+	 * clase que insertara gestiona todos los datos etre el sistema y la vase de datos
+	 */
 	@PersistenceContext
 	private EntityManager em;
-
+/**
+ * insertaa datos del estado ala base de datos
+ * @param entity
+ * @return estado
+ * @throws Exception
+ */
 	public boolean insertar(Estado entity) throws Exception {
 		boolean estado = true;
 		try {
@@ -33,7 +45,12 @@ public class EstadoDAO {
 
 		return estado;
 	}
-
+/**
+ * busca ls datos de estado
+ * @param id
+ * @return
+ * @throws Exception
+ */
 	public Estado read(int id) throws Exception {
 		try {
 			System.out.println("Estamos aca");
@@ -42,6 +59,11 @@ public class EstadoDAO {
 			throw new Exception("Erro leer Alogin " + e.getMessage());
 		}
 	}
+	/**
+	 * lista todos los datos del estado segun su clave 
+	 * @param clave
+	 * @return lista de estado
+	 */
 
 	public List<Estado> listaEstado(String clave) {
 
@@ -53,6 +75,13 @@ public class EstadoDAO {
 	    return null;
 	  }	
 }
+	/**
+	 * lista el estado segun la fecha de inicio y fin 
+	 * @param clave
+	 * @param desde
+	 * @param hasta
+	 * @return lista de estados segun la fecha
+	 */
 	public List<Estado> listaPorFecha(String clave ,Date desde ,Date hasta ) {
 
 		try {	
@@ -66,6 +95,12 @@ public class EstadoDAO {
 	  }	
 		
 	}
+	/**
+	 * lista el estado segun el ide de cuenta 
+	 * @param cuenta
+	 * @return
+	 * @throws Exception
+	 */
 		public Estado listarEstadoD(String cuenta) throws Exception {
 
 			try {	
@@ -77,8 +112,35 @@ public class EstadoDAO {
 			
 			    return null;
 			  }
-			
-}
-	
+		}
+		/**
+		 * lista todos los estados de todas las cuentas (clase prueba de funcionamiento)
+		 * @return lista estado
+		 */
+		public List<Estado> listaPrueva() {
+
+				try {	
+				    Query query = em.createNativeQuery("SELECT * FROM estado",Estado.class);
+				    List<Estado> aux=query.getResultList();
+				    return  aux;
+			} catch(NoResultException e) {
+			    return null;
+			  }	
+		}	
+/**
+ * 
+ * @param clave
+ * @return
+ */
+		public Estado estadobusqueda(String clave) {
+
+			try {	
+			    Query query = em.createNativeQuery("SELECT * FROM estado, cuenta ,usuario where PK_cuenta=id_cuenta and FK_cuenta_id = user_id and password=?",Estado.class);
+			    query.setParameter(1, clave);
+			    return (Estado) query.getSingleResult();
+		} catch(NoResultException e) {
+		    return null;
+		  }	
+	}
 
 }

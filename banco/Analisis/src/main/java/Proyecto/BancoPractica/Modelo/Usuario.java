@@ -12,13 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+/***
+ * 
+ * @author edison
+ *
+ */
 
 @Entity(name = "Usuario")
 @Table ( name  =  "Usuario" )
 public class Usuario implements Serializable {
 	/**
-	 * 
+	 * clase que sera usada como formulario de informacion para ser usado segun el sistema lo nesesite
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -36,9 +40,9 @@ public class Usuario implements Serializable {
 	@JoinColumn(name="`FK_per_idCedula`")
 	private Persona persona;
 
-	@OneToMany()
-	@JoinColumn(name="detalle")
-	private List<RegistroCliente> detalles;
+	//@OneToMany()
+	//@JoinColumn(name="detalle")
+	//private List<RegistroCliente> detalles;
 	
 	
 	public Persona getPersona() {
@@ -73,13 +77,13 @@ public class Usuario implements Serializable {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-	public List<RegistroCliente> getDetalles() {
-		return detalles;
-	}
+	//public List<RegistroCliente> getDetalles() {
+	//	return detalles;
+	//}
 
-	public void setDetalles(List<RegistroCliente> detalles) {
-		this.detalles = detalles;
-	}
+	//public void setDetalles(List<RegistroCliente> detalles) {
+	//	this.detalles = detalles;
+	//}
 
 	public String getEstado() {
 		return estado;
@@ -87,6 +91,14 @@ public class Usuario implements Serializable {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", password=" + password + ", tipoUsuario=" + tipoUsuario
+				+ ", estado=" + estado + ", persona=" + persona + ","
+						//+ " detalles=" + detalles +
+						+"]";
 	}
 
 

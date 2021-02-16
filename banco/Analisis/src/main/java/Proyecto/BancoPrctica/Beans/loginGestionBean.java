@@ -19,7 +19,7 @@ import Proyecto.BancoPrectica.Negocio.GestionLoginON;
 public class loginGestionBean implements Serializable {
 
 	/**
-	 * 
+	 * clase bean 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String correo;

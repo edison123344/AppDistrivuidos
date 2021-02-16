@@ -10,12 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
+/**
+ * 
+ * @author edison
+ *
+ */
 @Entity(name = "taza")
 @Table(name = "taza ")
 public class Taza implements Serializable {
 	/**
-	 * 
+	 * clase que guardara provisionalmente todos los datos de la taza y seran solisitados segun el sistema requiera de esta informacion
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id

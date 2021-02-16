@@ -15,9 +15,16 @@ import Proyecto.BancoPractica.Modelo.Poliza;
 import Proyecto.BancoPractica.Modelo.Taza;
 import Proyecto.BancoPrectica.DAO.PolizaDAO;
 import Proyecto.BancoPrectica.DAO.TazaDAO;
-
+/**
+ * 
+ * @author edison
+ *
+ */
 @Stateless
 public class GestionPolizaON {
+	/**
+	 * clase Que gestiona tododa la parte de gestion polisa
+	 */
 	@Inject
 	private PolizaDAO polizaDAO;
 	@Inject
@@ -25,6 +32,13 @@ public class GestionPolizaON {
 	
 	
 	public Date fechaC;
+	/**
+	 * metodo que calcula la poliza y las ganacias de la misma
+	 * @param monto
+	 * @param dias
+	 * @return poliza la poliza para ser aprobada por el usuario para aprobacion
+	 * @throws Exception
+	 */
 public Poliza calcularPoliza(double monto, int dias) throws Exception {
 	
 	Poliza poliza = new Poliza();
@@ -40,6 +54,11 @@ public Poliza calcularPoliza(double monto, int dias) throws Exception {
 	poliza.setFechaVencimiento(fechaC);
 	return poliza;
 }
+/**
+ * guarda los datos de la una ves aprobada por el usuario
+ * @param poliza
+ * @throws Exception
+ */
 public void GuardarPoliza(Poliza poliza) throws Exception {
 	polizaDAO.insertar(poliza);
 }
@@ -47,7 +66,12 @@ public void GuardarPoliza(Poliza poliza) throws Exception {
 public void listarPoliza() {
 	
 }
-
+/**
+ * datos para calcular la fecha de caducidad que se guardara en poliza
+ * @param fecha
+ * @param dias
+ * @return
+ */
 public  Date sumarDiasAFecha(Date fecha, int dias){
       if (dias==0) return fecha;
       Calendar calendar = Calendar.getInstance();
@@ -55,6 +79,11 @@ public  Date sumarDiasAFecha(Date fecha, int dias){
       calendar.add(Calendar.DAY_OF_YEAR, dias);  
       return calendar.getTime(); 
 }
+/**
+ * imprime fecha actual para ser guardada en la poliza
+ * @return
+ * @throws ParseException
+ */
 public  Date fechaActual() throws ParseException {
 	Date date = new Date();
     SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
