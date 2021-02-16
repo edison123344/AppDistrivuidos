@@ -6,4 +6,28 @@
 
 <ion-content>
 
+  <ion-item>
+    <ion-label position="floating">Cuenta destinatario</ion-label>
+
+    <ion-input [(ngModel)]="transferencia.numCuentaDP"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Cuenta usuario</ion-label>
+    <ion-input [(ngModel)]="transferencia.numCuentaRT"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Monto</ion-label>
+    <ion-input [(ngModel)]="transferencia.monto"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">tipo</ion-label>
+    <ion-input [(ngModel)]="transferencia.tipo"></ion-input>
+  </ion-item>
+  <section>
+    <header></header>
+    <ion-button expand="block" (click)="guardar()">Enviar</ion-button>
+  </section>
+
 </ion-content>

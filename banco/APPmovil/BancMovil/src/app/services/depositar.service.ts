@@ -25,7 +25,8 @@ export class DepositarService {
     return this.http.get<Estado[]>(this.WS_LLISTAR_CUENTA +"?clave='1'");
   }
   trasferencia(transferensia: Transferencia): Observable<any> {
-    return this.http.post<Mensaje>(this.WS_TRANSFERENSIA,Transferencia);
+    console.log("transaccion completa", transferensia);
+    return this.http.post<Mensaje>(this.WS_TRANSFERENSIA, transferensia);
   }
   login(correo: String, clave: string): Observable<any>  {
     return this.http.get<Mensaje>(this.WS_LOGEO + "?clave=" + clave +"&correo="+correo);
