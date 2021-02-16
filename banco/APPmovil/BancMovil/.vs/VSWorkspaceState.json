@@ -3,13 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\consutar-saldo",
     "\\src\\app\\folder",
     "\\src\\app\\model",
     "\\src\\app\\pages",
+    "\\src\\app\\pages\\cambio-clave",
     "\\src\\app\\pages\\listado-datos",
+    "\\src\\app\\pages\\trasnferencia",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\model\\Poliza.ts",
+  "SelectedNode": "\\src\\app\\pages\\cambio-clave\\cambio-clave.page.html",
   "PreviewInSolutionExplorer": false
 }

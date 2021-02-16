@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'trasnferencia',
     loadChildren: () => import('./pages/trasnferencia/trasnferencia.module').then( m => m.TrasnferenciaPageModule)
+  },
+  {
+    path: 'cambio-clave',
+    loadChildren: () => import('./pages/cambio-clave/cambio-clave.module').then( m => m.CambioClavePageModule)
   }
 ];
 
