@@ -8,11 +8,11 @@
   <ion-item>
     <ion-label position="floating">ingrese email</ion-label>
 
-    <ion-input></ion-input>
+    <ion-input [(ngModel)]="usuario.mail" ></ion-input>
   </ion-item>
 
   <section>
     <header></header>
-    <ion-button expand="block" (click)="cambio()">Enviar</ion-button>
+    <ion-button expand="block" (click)="cambiarClave()">Enviar</ion-button>
   </section>
 </ion-content>

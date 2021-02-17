@@ -32,6 +32,6 @@ export class DepositarService {
     return this.http.get<Mensaje>(this.WS_LOGEO + "?clave=" + clave +"&correo="+correo);
   }
   cambiarClave(correo: string): Observable<any>  {
-    return this.http.get<Mensaje>(this.WS_CAMBIO_CLAVE + "?correo" + correo);
+    return this.http.get<Mensaje>(this.WS_CAMBIO_CLAVE + "?correo=" + correo);
   }
 }

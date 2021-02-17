@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../../model/Usuario';
+import { DepositarService } from '../../services/depositar.service';
 
 @Component({
   selector: 'app-cambio-clave',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cambio-clave.page.scss'],
 })
 export class CambioClavePage implements OnInit {
-
-  constructor() { }
+  usuario: Usuario = new Usuario();
+  constructor(public dtService: DepositarService) { }
 
   ngOnInit() {
   }
-
+  cambiarClave() {
+    console.log(this.usuario.mail);
+    this.dtService.cambiarClave(this.usuario.mail).subscribe(data => {
+      console.log(data);
+    });
+  }
 }
