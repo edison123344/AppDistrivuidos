@@ -11,6 +11,6 @@
     "\\src\\app\\pages\\trasnferencia",
     "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\pages\\cambio-clave\\cambio-clave.page.html",
+  "SelectedNode": "\\src\\app\\app-routing.module.ts",
   "PreviewInSolutionExplorer": false
 }
