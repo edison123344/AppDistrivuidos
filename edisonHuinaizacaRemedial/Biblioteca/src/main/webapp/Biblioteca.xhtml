@@ -96,11 +96,15 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                                         <f:facet name="header">numero</f:facet>
                                         <label>#{libro.numero}</label>
                                     </h:column> 
-                                        <h:column>
+                                     <h:column>
+                                        <f:facet name="header">nombre autor</f:facet>
+                                        <label>#{libro.autor.nombre}</label>
+                                    </h:column> 
+                                       <!--   <h:column>
                                         <f:facet name="header">Pedir</f:facet>
                                         <h:commandButton action="#{pedidoProductoBeans.Solisitud(libro.id)}" value="Solisitar Pedido" />
                                         
-                                    </h:column>                              
+                                    </h:column> -->                             
 									</h:dataTable>
                               
                                 </div> 

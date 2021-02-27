@@ -3,6 +3,8 @@ package clienteBeans;
 import java.io.IOException;
 
 import javax.ejb.Stateless;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import clienteModelo.Libro;
@@ -34,8 +36,17 @@ public class clienteBibliotecaBeans {
 	public String reservar() throws IOException {
 		Libro libro =new Libro();
 		libro.setNombre(reserva);
-		HttpConeccion.sendPOST(libro);
+		if (HttpConeccion.sendPOST(libro)!=null) {
+		 FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Reserva exitosa","OK");
+			FacesContext.getCurrentInstance().addMessage(null, msm);
 		return"";
+		}else {
+			 FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
+						"error","error");
+				FacesContext.getCurrentInstance().addMessage(null, msm);
+			return "";
+		}
 	}
 
 	public String lista() throws IOException {

@@ -95,12 +95,16 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 								</div>
 								
 								<div class="form-group">
-									<label class="col-md-12">categoria</label>
-									<div class="col-md-12">
-										<h:inputText class="form-control form-control-line"
-											value="#{bibliotecaBeans.categoria}" id="dato" />
+									<label class="col-sm-12">Categoria</label>
+									<div class="col-sm-12">
+										<h:selectOneListbox class="form-control form-control-line"
+											value="#{bibliotecaBeans.categoria}">
+											<f:selectItem itemValue="quimica" itemLabel="quimica" />
+											<f:selectItem itemValue="computacion" itemLabel="computacion" />
+										</h:selectOneListbox>
 									</div>
-								</div>	
+
+								</div>
 								<div class="form-group">
 									<label class="col-md-12">nombre Autor</label>
 									<div class="col-md-12">
