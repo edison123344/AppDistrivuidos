@@ -4,12 +4,15 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import biblioteca.Modelo.Autor;
 import biblioteca.Modelo.Libro;
 import biblioteca.Negocio.bibliotecaON;
+
 
 @Named
 @SessionScoped
@@ -114,9 +117,17 @@ public class bibliotecaBeans implements Serializable {
 		dato.setEstado("disponible");
 		dato.setNombre(nombreLibro);
 		dato.setNumero(numerosDisponible);
-		bibliotecaON.ingreso(dato);
+		if (bibliotecaON.ingreso(dato)!=true) {
+			 FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
+						"Datos ingresados exitosamente","OK");
+				FacesContext.getCurrentInstance().addMessage(null, msm);		
 		return "";
-		
+		}else {
+			FacesMessage msm = new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Error ingreso","OK");
+			FacesContext.getCurrentInstance().addMessage(null, msm);	
+			return"";
+		}
 	}
 public String ListarDatos() {
 	    librosLista=bibliotecaON.listarLibros();

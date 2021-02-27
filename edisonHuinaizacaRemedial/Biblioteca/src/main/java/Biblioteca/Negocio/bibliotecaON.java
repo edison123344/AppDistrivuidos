@@ -20,8 +20,11 @@ public class bibliotecaON {
 public List<Libro> listarLibros() {
 	return libroDAO.listaProducto();
 }
-public void ingreso(Libro libro) throws Exception {
-	libroDAO.CrearLibro(libro);
+public List<Libro> listarLibrosCategoria(String Categoria) {
+	return libroDAO.listaCategoria(Categoria);
+}
+public boolean ingreso(Libro libro) throws Exception {
+	return libroDAO.CrearLibro(libro);
 }
 public Autor busquedaAutor(String id){
 	return autorDAO.busqueda(id);

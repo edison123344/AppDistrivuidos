@@ -55,4 +55,11 @@ public class clienteREST {
 				return m;
 			} 
 }
+	 @GET
+	    @Path("listarCategoria")
+	    @Produces("application/json")
+	    public List<Libro> listarcategoria(@QueryParam("categoria")String categoria) throws Exception {
+		 //System.out.println("datoresivido"+clave);
+	    	return bibliotecaON.listarLibrosCategoria(categoria);
+	    }
 }

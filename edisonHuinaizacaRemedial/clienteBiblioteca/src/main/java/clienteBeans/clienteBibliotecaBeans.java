@@ -17,7 +17,25 @@ import clienteON.HttpConeccion;
 public class clienteBibliotecaBeans {
 	private String datos;
 	private String reserva;
+	private String datoCategoria;
+	private String categoria;
 	
+	public String getDatoCategoria() {
+		return datoCategoria;
+	}
+
+	public void setDatoCategoria(String datoCategoria) {
+		this.datoCategoria = datoCategoria;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
 	public String getDatos() {
 		return datos;
 	}
@@ -33,6 +51,11 @@ public class clienteBibliotecaBeans {
 	public void setReserva(String reserva) {
 		this.reserva = reserva;
 	}
+	public String reservarCategorioa() throws IOException {
+		datoCategoria=HttpConeccion.categoriaGET(categoria);
+		return"";
+	}
+	
 	public String reservar() throws IOException {
 		Libro libro =new Libro();
 		libro.setNombre(reserva);

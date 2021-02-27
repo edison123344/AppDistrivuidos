@@ -109,4 +109,32 @@ public class HttpConeccion {
 		        return null;
 	            }
 		   return null;
-}}
+}
+	
+	public static String  categoriaGET(String categoria) throws IOException {
+		URL obj = new URL("http://localhost:8090/Biblioteca/ws/biblioteca/listarCategoria?categoria="+categoria);
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+		con.setRequestMethod("GET");
+		con.setRequestProperty("User-Agent", USER_AGENT);
+		int responseCode = con.getResponseCode();
+		System.out.println("GET Response Code :: " + responseCode);
+		if (responseCode == HttpURLConnection.HTTP_OK) { // success
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					con.getInputStream()));
+			String inputLine;
+			StringBuffer response = new StringBuffer();
+
+			while ((inputLine = in.readLine()) != null) {
+				response.append(inputLine);
+			}
+			in.close();
+
+			// print result
+			return response.toString();
+		} else {
+			return "GET request not worked";
+		}
+
+	}
+
+}

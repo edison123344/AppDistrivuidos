@@ -75,6 +75,32 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
                       <div class="white-box">
                          <h3 class="box-title">
 							<h:form class="form-horizontal form-material" id="frm">
+							
+							 <div class="form-group">
+									<label class="col-md-12">Busqueda por categoria</label>
+									<div class="col-md-12">
+										<h:inputText class="form-control form-control-line"
+											value="#{clienteBibliotecaBeans.categoria}" id="categoria" />
+
+									</div>
+									
+									
+								</div>	
+							
+							<div class="form-group">
+									<label  class="col-md-12">Lista Categoria</label>
+									
+								</div>	
+								    <h:outputText style="color:blue"  value="#{clienteBibliotecaBeans.datoCategoria}" />
+								 <div class="col-sm-12">
+                                       <h:commandButton class="btn btn-success" action="#{clienteBibliotecaBeans.reservarCategorioa()}" value="listarcategoria " />
+                                </div>
+							
+							
+							
+							
+							
+							
 				          <div class="form-group">
 									<label class="col-md-12">Reservar por nombre</label>
 									<div class="col-md-12">
@@ -82,6 +108,7 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 											value="#{clienteBibliotecaBeans.reserva}" id="estado" />
 
 									</div>
+									
 									
 								</div>	
 						
@@ -92,12 +119,7 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 								 <h:messages id="msm" style="color: blue" />
 								 	<div class="form-group">
 									<label  class="col-md-12">Lista</label>
-									<div class="col-md-12">
-									 <ui:insert name="content">
-                                       #{clienteBibliotecaBeans.datos}
-                                      </ui:insert>
-                                      
-									</div>
+									
 								</div>	
 								    <h:outputText style="color:red" 
                                    value="#{clienteBibliotecaBeans.datos}" />

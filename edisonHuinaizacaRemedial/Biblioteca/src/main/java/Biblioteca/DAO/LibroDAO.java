@@ -69,4 +69,15 @@ public class LibroDAO {
 		} catch(NoResultException e) {
 		    return null;
 		  }}
+	
+	public List<Libro> listaCategoria(String clave) {
+
+		try {	
+		    Query query = em.createNativeQuery("SELECT * FROM libro where categoria= ? and numero !=0;  ",Libro.class);
+		    query.setParameter(1, clave);
+		    return  query.getResultList();
+	} catch(NoResultException e) {
+	    return null;
+	  }	
+}
 }
