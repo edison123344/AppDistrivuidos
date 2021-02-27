@@ -1,11 +1,19 @@
 package clienteBeans;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import com.google.gson.Gson;
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 import clienteModelo.Libro;
 import clienteON.HttpConeccion;
@@ -15,16 +23,17 @@ import clienteON.HttpConeccion;
 @Named
 @Stateless
 public class clienteBibliotecaBeans {
-	private String datos;
+	private List<Libro> datos;
 	private String reserva;
-	private String datoCategoria;
+	private List<Libro> datoCategoria;
 	private String categoria;
 	
-	public String getDatoCategoria() {
+
+	public List<Libro> getDatoCategoria() {
 		return datoCategoria;
 	}
 
-	public void setDatoCategoria(String datoCategoria) {
+	public void setDatoCategoria(List<Libro> datoCategoria) {
 		this.datoCategoria = datoCategoria;
 	}
 
@@ -36,11 +45,13 @@ public class clienteBibliotecaBeans {
 		this.categoria = categoria;
 	}
 
-	public String getDatos() {
+	
+
+	public List<Libro> getDatos() {
 		return datos;
 	}
 
-	public void setDatos(String datos) {
+	public void setDatos(List<Libro> datos) {
 		this.datos = datos;
 	}
 
@@ -51,8 +62,9 @@ public class clienteBibliotecaBeans {
 	public void setReserva(String reserva) {
 		this.reserva = reserva;
 	}
-	public String reservarCategorioa() throws IOException {
+	public String reservarCategorioa() throws IOException, org.json.simple.parser.ParseException {
 		datoCategoria=HttpConeccion.categoriaGET(categoria);
+	
 		return"";
 	}
 	
@@ -77,4 +89,5 @@ public class clienteBibliotecaBeans {
 		
 		return"";
 	}
+
 }

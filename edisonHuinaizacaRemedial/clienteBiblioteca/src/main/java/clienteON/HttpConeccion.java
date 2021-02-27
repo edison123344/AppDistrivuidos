@@ -6,11 +6,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Reader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import clienteModelo.Libro;
+import jdk.nashorn.internal.parser.JSONParser;
+
 
 
 
@@ -34,7 +44,7 @@ public class HttpConeccion {
 		System.out.println("POST DONE");
 	}
 */
-	public static String  sendGET() throws IOException {
+	public static List<Libro>  sendGET() throws IOException {
 		URL obj = new URL("http://localhost:8090/Biblioteca/ws/biblioteca/listarLibros");
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
@@ -52,10 +62,15 @@ public class HttpConeccion {
 			}
 			in.close();
 
-			// print result
-			return response.toString();
+			 Gson gson = new Gson();
+			 String result = response.toString();
+
+			 List<Libro> list = new ArrayList<Libro>();
+			 Type listType = new TypeToken<List<Libro>>() {}.getType();
+			 list = gson.fromJson(result, listType);
+			return list;
 		} else {
-			return "GET request not worked";
+			return null;
 		}
 
 	}
@@ -111,7 +126,7 @@ public class HttpConeccion {
 		   return null;
 }
 	
-	public static String  categoriaGET(String categoria) throws IOException {
+	public static List<Libro>  categoriaGET(String categoria) throws IOException {
 		URL obj = new URL("http://localhost:8090/Biblioteca/ws/biblioteca/listarCategoria?categoria="+categoria);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
@@ -122,19 +137,29 @@ public class HttpConeccion {
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					con.getInputStream()));
 			String inputLine;
+		
 			StringBuffer response = new StringBuffer();
-
+		
 			while ((inputLine = in.readLine()) != null) {
 				response.append(inputLine);
+				
 			}
 			in.close();
+	
+               
+	
+			 Gson gson = new Gson();
+			 String result = response.toString();
 
-			// print result
-			return response.toString();
+			 List<Libro> list = new ArrayList<Libro>();
+			 Type listType = new TypeToken<List<Libro>>() {}.getType();
+			 list = gson.fromJson(result, listType);
+			   
+			return list;
 		} else {
-			return "GET request not worked";
+			return null;
 		}
 
 	}
-
+	
 }

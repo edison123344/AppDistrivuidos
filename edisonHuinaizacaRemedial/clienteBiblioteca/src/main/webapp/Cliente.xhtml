@@ -86,22 +86,7 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 									
 									
 								</div>	
-							
-							<div class="form-group">
-									<label  class="col-md-12">Lista Categoria</label>
-									
-								</div>	
-								    <h:outputText style="color:blue"  value="#{clienteBibliotecaBeans.datoCategoria}" />
-								 <div class="col-sm-12">
-                                       <h:commandButton class="btn btn-success" action="#{clienteBibliotecaBeans.reservarCategorioa()}" value="listarcategoria " />
-                                </div>
-							
-							
-							
-							
-							
-							
-				          <div class="form-group">
+								<div class="form-group">
 									<label class="col-md-12">Reservar por nombre</label>
 									<div class="col-md-12">
 										<h:inputText class="form-control form-control-line"
@@ -109,20 +94,91 @@ xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 									</div>
 									
-									
 								</div>	
+							
+							<div class="form-group">
+									<label  class="col-md-12">Lista Categoria 999</label>
+									
+							
+								   
+								   
+								   <h:dataTable class="table"  id="detalle" value="#{clienteBibliotecaBeans.datoCategoria}"  var="libro">
+				                      <h:column>
+                                        <f:facet name="header">Id</f:facet>
+                                        <label class="col-md-12">#{libro.id}</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">nombre Libro</f:facet>
+                                        <label >#{libro.nombre}</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Disponible</f:facet>
+                                        <label >#{libro.estado}</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">numero</f:facet>
+                                        <label>#{libro.numero}</label>
+                                    </h:column> 
+                                     <h:column>
+                                        <f:facet name="header">nombre autor</f:facet>
+                                        <label>#{libro.autor.nombre}</label>
+                                    </h:column> 
+                                       <!--   <h:column>
+                                        <f:facet name="header">Pedir</f:facet>
+                                        <h:commandButton action="#{pedidoProductoBeans.Solisitud(libro.id)}" value="Solisitar Pedido" />
+                                        
+                                    </h:column> -->                             
+									</h:dataTable>
+                              
+                            	</div>	
+                    <div class="form-group">
+									<label  class="col-md-12">Lista</label>
+									
+									
+									<h:dataTable class="table"  id="detalles" value="#{clienteBibliotecaBeans.datos}"  var="libros">
+				                      <h:column>
+                                        <f:facet name="header">Id</f:facet>
+                                        <label class="col-md-12">#{libros.id}</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">nombre Libro</f:facet>
+                                        <label >#{libros.nombre}</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Disponible</f:facet>
+                                        <label >#{libros.estado}</label>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">numero</f:facet>
+                                        <label>#{libros.numero}</label>
+                                    </h:column> 
+                                     <h:column>
+                                        <f:facet name="header">nombre autor</f:facet>
+                                        <label>#{libros.autor.nombre}</label>
+                                    </h:column> 
+                                       <!--   <h:column>
+                                        <f:facet name="header">Pedir</f:facet>
+                                        <h:commandButton action="#{pedidoProductoBeans.Solisitud(libro.id)}" value="Solisitar Pedido" />
+                                        
+                                    </h:column> -->                             
+									</h:dataTable>
+								</div>	
+								   
+								   
+								   
+								 <div class="col-sm-12">
+                                       <h:commandButton class="btn btn-success" action="#{clienteBibliotecaBeans.reservarCategorioa()}" value="listarcategoria " />
+                                </div>
+
+				          
 						
                                 <div class="col-sm-12">
                                        <h:commandButton class="btn btn-success" action="#{clienteBibliotecaBeans.reservar()}" value="Reserva" />
                                 </div>
                                 
 								 <h:messages id="msm" style="color: blue" />
-								 	<div class="form-group">
-									<label  class="col-md-12">Lista</label>
-									
-								</div>	
-								    <h:outputText style="color:red" 
-                                   value="#{clienteBibliotecaBeans.datos}" />
+								 	
+								   
 								 <div class="col-sm-12">
                                        <h:commandButton class="btn btn-success" action="#{clienteBibliotecaBeans.lista()}" value="listar " />
                                 </div>
