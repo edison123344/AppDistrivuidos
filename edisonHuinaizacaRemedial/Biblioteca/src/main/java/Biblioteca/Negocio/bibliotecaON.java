@@ -29,4 +29,10 @@ public Autor busquedaAutor(String id){
 public void ingresarAutor(Autor autor) throws Exception {
 	autorDAO.CrearAutor(autor);
 }
+public Libro busqueda(String id) {
+	return libroDAO.busqueda(id);
+}
+public void reserva(Libro libro) throws Exception {
+	libroDAO.actualizar(libro);
+}
 }

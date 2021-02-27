@@ -8,7 +8,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
+import biblioteca.Modelo.Autor;
 import biblioteca.Modelo.Libro;
 
 
@@ -60,5 +60,13 @@ public class LibroDAO {
 	    return null;
 	  }	
 }
-	
+	public Libro busqueda(String id) {
+
+		try {
+			    Query query = em.createNativeQuery("SELECT * FROM libro WHERE nombre= ?",Libro.class);
+			    query.setParameter(1, id);
+			    return  (Libro) query.getSingleResult();
+		} catch(NoResultException e) {
+		    return null;
+		  }}
 }

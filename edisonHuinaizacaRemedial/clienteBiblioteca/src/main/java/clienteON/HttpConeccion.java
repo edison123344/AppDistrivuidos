@@ -22,7 +22,7 @@ public class HttpConeccion {
 
 	//private static final String GET_URL = "http://localhost:8090/Fereteria/ws/Provedores/listarProvedores";
 
-	private static final String POST_URL = "http://localhost:8090/Fereteria/ws/Provedores/depositar";
+	private static final String POST_URL = "http://localhost:8090/Biblioteca/ws/biblioteca/reserva";
 
 	private static final String POST_PARAMS = "userName=Pankaj";
 
@@ -70,12 +70,15 @@ public class HttpConeccion {
 		        conn.setRequestMethod("POST");
 		        conn.setRequestProperty("Content-Type", "application/json");
 		    //    pr.getFereteria();
-		        String input = null;
-		       //String input = "{"
-		        //		+ "\"nombreProbedor\":\""+pr.getNombreProbedor()+"\","
+		       // String input = null;
+		       String input = "{\"autor\":{\"id\":1,\"nombre\":\"juan\"},\"categoria\":\"quimica\",\"estado\":\"disponible\",\"id\":1,"
+		       		+ "\"nombre\":\""+pr.getNombre()+"\""
+		       		+ ",\"numero\":1}";
+		        		//+ "\"nombre\":\""+pr.getNombre()+"}";
 		        //		+ "\"nombreProducto\":\""+pr.getNombreProducto()+"\","
 		        //		+ "\"stok\":"+pr.getStok()+"}";
-              //System.out.println(input);
+              System.out.println(input);
+		       ///{"autor":{"id":1,"nombre":"juan"},"categoria":"quimica","estado":"disponible","id":1,"nombre":"quimica","numero":1}
 		       OutputStream os = conn.getOutputStream();
 		        os.write(input.getBytes());
 		        os.flush();
